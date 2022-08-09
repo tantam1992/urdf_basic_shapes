@@ -5,25 +5,6 @@
   <!-- basic material -->
   <xacro:include filename="$(find urdf_basic_shapes)/urdf/material.urdf.xacro"/>
 
-  
-
-  <!-- <link name="base_link">
-
-   <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="1 1 1"/>
-      </geometry>
-      <material name="grey"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <box size="1 1 1" />    
-      </geometry>
-    </collision>
-    <xacro:solid_cuboid_inertia m="1" h="1" d="1" w="1"/>
-  </link> -->
 
   <xacro:macro name="cube" params="name x y z ori rpy rgb m">
     <link name="${name}">
@@ -44,13 +25,51 @@
     </link>
   </xacro:macro>
 
-  <!-- <joint name="cube_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="cube1"/>
-    <axis xyz="0 0 0"/>
-    <origin xyz="0 0 0" />
-  </joint> -->
+  <xacro:macro name="ball" params="name r ori rpy rgb m">
+    <link name="${name}">
+        <visual>
+          <origin xyz="${ori}" rpy="${rpy}"/>
+          <geometry>
+              <sphere radius="${r}"/>
+          </geometry>
+          <material name="${rgb}"/>
+        </visual>
+        <collision>
+        <origin xyz="${ori}" rpy="${rpy}" />
+        <geometry>
+            <sphere radius="${r}" />    
+        </geometry>
+        </collision>
+        <xacro:solid_sphere_inertia m="${m}" r="${r}"/>
+    </link>
+  </xacro:macro>
 
-  <xacro:cube name="base_link" x="1" y="1" z="1" ori="0 0 0" rpy="0 0 0" rgb="green" m="1"/>
+  <xacro:macro name="cylinder_shape" params="name r h ori rpy rgb m">
+    <link name="${name}">
+        <visual>
+          <origin xyz="${ori}" rpy="${rpy}"/>
+          <geometry>
+              <cylinder radius="${r}" length="${h}"/>
+          </geometry>
+          <material name="${rgb}"/>
+        </visual>
+        <collision>
+        <origin xyz="${ori}" rpy="${rpy}" />
+        <geometry>
+            <cylinder radius="${r}" length="${h}" />    
+        </geometry>
+        </collision>
+        <xacro:solid_cylinder_inertia m="${m}" r="${r}" h="${h}"/>
+    </link>
+  </xacro:macro>
+
+
+
+
+  
+
+
+
+  
 
 </robot>
