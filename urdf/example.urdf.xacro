@@ -5,32 +5,60 @@
     <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.urdf.xacro"/>
     <!-- diff_wheel -->
     <xacro:include filename="$(find urdf_basic_shapes)/urdf/diff_wheel.urdf.xacro"/>
+    <!-- rplidar -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/rplidar.urdf.xacro"/>
+    <!-- velodyne -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/velodyne.urdf.xacro"/>
+    <!-- hokuyo -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
     
 
     <link name="base_footprint"/>
 
-    <xacro:cube name="base_link" x="2" y="1" z="1" ori="-.5 0 .5" rpy="0 0 0" rgb="Green" m="1" friction="${standard_friction}"/>
+    <!-- cubeical base_link -->
+    <xacro:cube name="base_link" x="2" y="1" z="1" ori="-.5 0 .5" rpy="0 0 0" rgb="Green" m="2" friction="${standard_friction}"/>
     <joint name="cube1_joint" type="fixed">
         <parent link="base_footprint"/>
         <child link="base_link"/>
         <origin xyz="0 0 0.2" rpy="0 0 0"/>
     </joint>
 
-    <xacro:ball name="ball1" r="0.5" ori="0 0 0" rpy="0 0 0" rgb="Blue" m="1" friction="${standard_friction}"/>
+    <!-- ball  -->
+    <xacro:ball name="ball1" r="0.5" ori="0 0 0" rpy="0 0 0" rgb="Blue" m=".5" friction="${standard_friction}"/>
     <joint name="joint_ball1" type="fixed">
         <parent link="base_link"/>
         <child link="ball1"/>
         <origin xyz="0 0 1" rpy="0 0 0"/>
     </joint>
 
-    <xacro:cylinder_shape name="cylinder1" r="0.5" h="1" ori="0 0 0" rpy="0 0 0" rgb="Black" m="1" friction="${standard_friction}"/>
+    <!-- cylinder -->
+    <xacro:cylinder_shape name="cylinder1" r="0.5" h="1" ori="0 0 0" rpy="0 0 0" rgb="Black" m=".5" friction="${standard_friction}"/>
     <joint name="joint_cylinder1" type="fixed">
         <parent link="base_link"/>
         <child link="cylinder1"/>
         <origin xyz="0 0 2" rpy="0 0 3.1416"/>
     </joint>
 
-    <xacro:diff_wheel wheeldiam="0.4" parent="base_link" wheel_separation="1.2"/>
+    <!-- diff drive -->
+    <!-- the parent link should be the center of wheel axis -->
+    <xacro:diff_wheel wheeldiam="0.4" wheel_separation="1.2" parent="base_link" friction="200"/>
+
+    <!-- caster wheel -->
+    <xacro:ball name="casterwheel" r="0.2" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".5" friction="${sliding_friction}"/>
+    <joint name="joint_casterwheel" type="fixed">
+        <parent link="base_link"/>
+        <child link="casterwheel"/>
+        <origin xyz="-1 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- rplidar -->
+    <xacro:rplidar name="rplidar" xyz="-1 0 1.05" rpy="0 0 0" parent="base_link" topic="rplidar/scan"/>
     
+    <!-- Hokuyo Laser -->
+    <xacro:hokuyo name="hokuyo" xyz="-1 0 2.05" rpy="0 0 0" parent="base_link" topic="hokuyu/scan"/>
+
+    <!-- Veldoyne Lidar  -->
+    <xacro:velodyne16 name="velodyne" xyz="-1 0 1.5" rpy="0 0 0" parent="base_link"/>
+
 
 </robot>
