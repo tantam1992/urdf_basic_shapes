@@ -3,7 +3,6 @@
   <xacro:arg name="laser_visual" default="true"/>
 
   <xacro:property name="update_rate" value="10" />
-  <xacro:property name="M_PI_2" value="1.57079632679"/>
 
   <xacro:property name="standard_friction" value="0.2" />
   <xacro:property name="wheel_friction" value="10000.0" />
