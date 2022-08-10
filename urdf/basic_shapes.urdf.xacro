@@ -4,9 +4,11 @@
   <xacro:include filename="$(find urdf_basic_shapes)/urdf/inertia.urdf.xacro"/>
   <!-- basic material -->
   <xacro:include filename="$(find urdf_basic_shapes)/urdf/material.urdf.xacro"/>
+  <!-- basic shapes gazebo-->
+  <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.gazebo.xacro"/>
 
 
-  <xacro:macro name="cube" params="name x y z ori rpy rgb m">
+  <xacro:macro name="cube" params="name x y z ori rpy rgb m friction">
     <link name="${name}">
         <visual>
           <origin xyz="${ori}" rpy="${rpy}"/>
@@ -23,9 +25,10 @@
         </collision>
         <xacro:solid_cuboid_inertia m="${m}" h="${y}" d="${z}" w="${x}"/>
     </link>
+    <xacro:gazebo_params name="${name}" rgb="${rgb}" friction="${friction}"/>
   </xacro:macro>
 
-  <xacro:macro name="ball" params="name r ori rpy rgb m">
+  <xacro:macro name="ball" params="name r ori rpy rgb m friction">
     <link name="${name}">
         <visual>
           <origin xyz="${ori}" rpy="${rpy}"/>
@@ -42,9 +45,10 @@
         </collision>
         <xacro:solid_sphere_inertia m="${m}" r="${r}"/>
     </link>
+    <xacro:gazebo_params name="${name}" rgb="${rgb}" friction="${friction}"/>
   </xacro:macro>
 
-  <xacro:macro name="cylinder_shape" params="name r h ori rpy rgb m">
+  <xacro:macro name="cylinder_shape" params="name r h ori rpy rgb m friction">
     <link name="${name}">
         <visual>
           <origin xyz="${ori}" rpy="${rpy}"/>
@@ -61,14 +65,8 @@
         </collision>
         <xacro:solid_cylinder_inertia m="${m}" r="${r}" h="${h}"/>
     </link>
+    <xacro:gazebo_params name="${name}" rgb="${rgb}" friction="${friction}"/>
   </xacro:macro>
-
-
-
-
-  
-
-
 
   
 

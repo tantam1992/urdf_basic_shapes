@@ -1,5 +1,5 @@
 <launch>
-  <arg name="model" default="lift_simple"/>
+  <arg name="model" default="example"/>
   <arg name="x_pos" default="0"/>
   <arg name="y_pos" default="0"/>
   <arg name="z_pos" default="0"/>
@@ -13,21 +13,21 @@
   </include>
 
   <!-- lift model -->
-  <param name="robot_description" command="$(find xacro)/xacro $(find lift_description)/urdf/$(arg model).urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find urdf_basic_shapes)/urdf/$(arg model).urdf.xacro" />
 
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model $(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
   <!-- joint controller  -->
-  <rosparam command="load"
-          file="$(find lift_description)/config/joints.yaml"
+  <!-- <rosparam command="load"
+          file="$(find urdf_basic_shapes)/config/joints.yaml"
           ns="joint_state_controller" />
   <rosparam command="load"
-          file="$(find lift_description)/config/lift.yaml"
+          file="$(find urdf_basic_shapes)/config/lift.yaml"
           ns="lift_controller" />
   <node name="controller_spawner" pkg="controller_manager" type="spawner"
     args="joint_state_controller
         lift_controller
-        --shutdown-timeout 3"/>
-  <node name="lift_hw_controller" pkg="lift_description" type="lift_hw_controller.py" output="screen" />
+        <!!! replace with dashdash !!!!>shutdown-timeout 3"/>
+  <node name="lift_hw_controller" pkg="urdf_basic_shapes" type="lift_hw_controller.py" output="screen" /> -->
 
 </launch>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot name="basic_shapes" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- basic shapes -->
+    <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.urdf.xacro"/>
+    
+
+    <link name="base_footprint"/>
+
+    <xacro:cube name="base_link" x="1" y="1" z="1" ori="0 0 0" rpy="0 0 0" rgb="Green" m="1" friction="${standard_friction}"/>
+    <joint name="cube1_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    </joint>
+
+    <xacro:ball name="ball1" r="0.5" ori="0 0 0" rpy="0 0 0" rgb="Blue" m="1"/>
+    <joint name="joint_ball1" type="fixed">
+        <parent link="base_link"/>
+        <child link="ball1"/>
+        <origin xyz="0 0 1" rpy="0 0 0"/>
+    </joint>
+
+    <xacro:cylinder_shape name="cylinder1" r="0.5" h="1" ori="0 0 0" rpy="0 0 0" rgb="Black" m="1"/>
+    <joint name="joint_cylinder1" type="fixed">
+        <parent link="base_link"/>
+        <child link="cylinder1"/>
+        <origin xyz="0 0 2" rpy="0 0 3.1416"/>
+    </joint>
+
+
+</robot>
