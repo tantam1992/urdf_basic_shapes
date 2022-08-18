@@ -2,8 +2,8 @@
 <robot name="diff_wheel" xmlns:xacro="http://wiki.ros.org/xacro">
 
     <!-- differential drive macro -->
-    <xacro:macro name="diff_wheel" params=" wheeldiam wheel_separation parent friction">
-        <xacro:cylinder_shape name="left_wheel" r="${wheeldiam/2}" h="0.1" ori="0 0 0" rpy="0 0 0" rgb="Grey" m="0.1" friction="${friction}"/>
+    <xacro:macro name="diff_wheel" params=" wheeldiam h wheel_separation parent friction rgb">
+        <xacro:cylinder_shape name="left_wheel" r="${wheeldiam/2}" h="${h}" ori="0 0 0" rpy="0 0 0" rgb="${rgb}" m="0.1" friction="${friction}"/>
         <joint name="left_wheel_joint" type="continuous">
             <axis xyz="0 0 1" rpy="0 0 0" />
             <parent link="${parent}"/>
@@ -11,7 +11,7 @@
             <origin xyz="0 ${wheel_separation/2} 0" rpy="${-pi/2} 0 0"/>
         </joint>
 
-        <xacro:cylinder_shape name="right_wheel" r="${wheeldiam/2}" h="0.1" ori="0 0 0" rpy="0 0 0" rgb="Grey" m="0.1" friction="${friction}"/>
+        <xacro:cylinder_shape name="right_wheel" r="${wheeldiam/2}" h="${h}" ori="0 0 0" rpy="0 0 0" rgb="${rgb}" m="0.1" friction="${friction}"/>
         <joint name="right_wheel_joint" type="continuous">
             <axis xyz="0 0 1" rpy="0 0 0" />
             <parent link="${parent}"/>

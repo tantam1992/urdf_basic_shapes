@@ -1,6 +1,6 @@
 # urdf_lib
 
-library for basi urdf shapes  
+library for basic urdf shapes  
 
 e.g.  
 `roslaunch urdf_basic_shapes display.launch`  

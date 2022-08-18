@@ -41,7 +41,7 @@
 
     <!-- diff drive -->
     <!-- the parent link should be the center of wheel axis -->
-    <xacro:diff_wheel wheeldiam="0.4" wheel_separation="1.2" parent="base_link" friction="200"/>
+    <xacro:diff_wheel wheeldiam="0.4" wheel_separation="1.2" parent="base_link" friction="200" rgb="Grey" h=".1"/>
 
     <!-- caster wheel -->
     <xacro:ball name="casterwheel" r="0.2" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".5" friction="${sliding_friction}"/>
@@ -52,7 +52,7 @@
     </joint>
 
     <!-- rplidar -->
-    <xacro:rplidar name="rplidar" xyz="-1 0 1.05" rpy="0 0 0" parent="base_link" topic="rplidar/scan"/>
+    <xacro:rplidar name="rplidar" xyz="-1 0 1.02" rpy="0 0 0" parent="base_link" topic="rplidar/scan"/>
     
     <!-- Hokuyo Laser -->
     <xacro:hokuyo name="hokuyo" xyz="-1 0 2.05" rpy="0 0 0" parent="base_link" topic="hokuyu/scan"/>
