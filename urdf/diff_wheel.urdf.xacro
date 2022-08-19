@@ -20,7 +20,7 @@
         </joint>
 
         <gazebo>
-        <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+        <plugin name="diff_drive_controller" filename="libgazebo_ros_diff_drive.so">
 
             <!-- Plugin update rate in Hz -->
             <updateRate>${update_rate}</updateRate>
@@ -56,7 +56,7 @@
             <robotBaseFrame>base_footprint</robotBaseFrame>
 
             <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
-            <odometrySource>1</odometrySource>
+            <odometrySource>world</odometrySource>
 
             <!-- Set to true to publish transforms for the wheel links, defaults to false -->
             <publishWheelTF>true</publishWheelTF>
@@ -69,6 +69,9 @@
 
             <!-- Set to true to swap right and left wheels, defaults to true -->
             <legacyMode>false</legacyMode>
+            <publishOdomTF>true</publishOdomTF>
+            <publishTf>true</publishTf>
+            <rosDebugLevel>na</rosDebugLevel>
         </plugin>
         </gazebo>
 
