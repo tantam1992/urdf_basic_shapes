@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="hokuyo" xmlns:xacro="http://wiki.ros.org/xacro">
-    <xacro:macro name="hokuyo" params="name parent xyz rpy topic">
+    <xacro:macro name="hokuyo" params="name parent xyz rpy min max">
         <link name="${name}">
             <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -23,7 +23,7 @@
             </inertial>
         </link>
 
-        <joint name="hokuyo_joint" type="fixed">
+        <joint name="${name}_joint" type="fixed">
             <axis xyz="0 1 0" />
             <origin xyz="${xyz}" rpy="${rpy}"/>
             <parent link="${parent}"/>
@@ -41,8 +41,8 @@
                 <horizontal>
                     <samples>720</samples>
                     <resolution>1</resolution>
-                    <min_angle>-1.570796</min_angle>
-                    <max_angle>1.570796</max_angle>
+                    <min_angle>${min}</min_angle>
+                    <max_angle>${max}</max_angle>
                 </horizontal>
                 </scan>
                 <range>
@@ -61,7 +61,7 @@
                 </noise>
             </ray>
             <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-                <topicName>${topic}</topicName>
+                <topicName>${name}</topicName>
                 <frameName>${name}</frameName>
             </plugin>
             </sensor>
