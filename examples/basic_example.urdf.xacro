@@ -55,7 +55,7 @@
     <xacro:rplidar name="rplidar" xyz="-1 0 1.02" rpy="0 0 0" parent="base_link" topic="rplidar/scan"/>
     
     <!-- Hokuyo Laser -->
-    <xacro:hokuyo name="hokuyo" xyz="-1 0 2.05" rpy="0 0 0" parent="base_link" topic="hokuyu/scan"/>
+    <xacro:hokuyo name="hokuyo_scan" xyz="-1 0 2.05" rpy="0 0 0" parent="base_link" min="${-pi/2}" max="${pi/2}"/>
 
     <!-- Veldoyne Lidar  -->
     <xacro:velodyne16 name="velodyne" xyz="-1 0 1.5" rpy="0 0 0" parent="base_link"/>
