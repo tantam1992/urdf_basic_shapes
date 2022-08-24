@@ -8,7 +8,7 @@
   <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.gazebo.xacro"/>
 
   <!-- constants -->
-  <xacro:property name="pi" value="3.14159" />
+  <!-- <xacro:property name="pi" value="3.14159" />  is already defined globally-->
   <xacro:property name="update_rate" value="50" />
 
   <xacro:macro name="cube" params="name x y z ori rpy rgb m friction">
