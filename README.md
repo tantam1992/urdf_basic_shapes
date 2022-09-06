@@ -1,6 +1,6 @@
 # urdf_lib
 
-library for basic urdf shapes  
+library for basic urdf shapes. Create urdf robots and sensors simple.   
 
 e.g.  
 `roslaunch urdf_basic_shapes display.launch`  
