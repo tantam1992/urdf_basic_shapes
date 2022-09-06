@@ -3,12 +3,7 @@
 
     <!-- basic shapes -->
     <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.urdf.xacro"/>
-    <!-- diff_wheel -->
-    <xacro:include filename="$(find urdf_basic_shapes)/urdf/diff_wheel.urdf.xacro"/>
-    <!-- hokuyo -->
-    <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
-    <!-- imu -->
-    <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
+
 
     <link name="base_footprint"/>
 
@@ -46,6 +41,7 @@
 
     <!-- diff drive -->
     <!-- the parent link should be the center of wheel axis -->
+    <xacro:include filename="$(find urdf_basic_shapes)/urdf/diff_wheel.urdf.xacro"/>
     <xacro:diff_wheel wheeldiam="0.16" h=".05" wheel_separation=".6" parent="base_link" friction="200" rgb="Black"/>
 
     <!-- caster wheel back -->
@@ -65,9 +61,11 @@
 
     
     <!-- Hokuyo Laser -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
     <xacro:hokuyo name="base_scan" xyz=".25 0 .25" rpy="${pi} 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi}"/>
 
      <!-- imu -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
     <xacro:imu name="imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
 
 
