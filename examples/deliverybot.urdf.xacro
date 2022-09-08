@@ -42,7 +42,7 @@
     <!-- diff drive -->
     <!-- the parent link should be the center of wheel axis -->
     <xacro:include filename="$(find urdf_basic_shapes)/urdf/diff_wheel.urdf.xacro"/>
-    <xacro:diff_wheel wheeldiam="0.16" h=".05" wheel_separation=".6" parent="base_link" friction="200" rgb="Black"/>
+    <xacro:diff_wheel wheeldiam="0.16" h=".05" wheel_separation=".6" parent="base_link" friction="200" rgb="Black" odom_topic="robot_pose_ekf/odom_combined"/>
 
     <!-- caster wheel back -->
     <xacro:ball name="casterwheel_back" r="0.08" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".1" friction="${sliding_friction}"/>
@@ -62,11 +62,11 @@
     
     <!-- Hokuyo Laser -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
-    <xacro:hokuyo name="base_scan" xyz=".25 0 .25" rpy="${pi} 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}"/>
+    <xacro:hokuyo name="scan_filtered" xyz=".25 0 .25" rpy="${pi} 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}"/>
 
      <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
-    <xacro:imu name="imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
+    <xacro:imu name="wit/Imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
 
 
 </robot>

@@ -8,7 +8,7 @@
     <link name="base_footprint"/>
 
     <!-- cubeical base_link -->
-    <xacro:cube name="base_link" x="2" y="1" z="1" ori="-.5 0 .5" rpy="0 0 0" rgb="Green" m="2" friction="${standard_friction}"/>
+    <xacro:cube name="base_link" x="2" y="1" z="1" ori="-.5 0 .5" rpy="0 0 0" rgb="Orange" m="2" friction="${standard_friction}"/>
     <joint name="cube1_joint" type="fixed">
         <parent link="base_footprint"/>
         <child link="base_link"/>
