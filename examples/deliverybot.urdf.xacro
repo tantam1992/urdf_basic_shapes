@@ -66,7 +66,7 @@
 
      <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
-    <xacro:imu name="wit/Imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
+    <xacro:imu name="wit/Imu" xyz="-0.15 0 .5" rpy="0 0 0" parent="base_link"/>
 
 
 </robot>
