@@ -62,7 +62,7 @@
     
     <!-- Hokuyo Laser -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
-    <xacro:hokuyo name="scan_filtered" xyz=".25 0 .05" rpy="0 ${pi} 0" parent="base_link" min_a="${-pi}" max_a="${pi}"/>
+    <xacro:hokuyo name="scan" xyz=".25 0 .05" rpy="0 ${pi} 0" parent="base_link" min_a="${-pi}" max_a="${pi}"/>
 
      <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
