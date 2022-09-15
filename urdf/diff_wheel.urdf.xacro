@@ -2,7 +2,7 @@
 <robot name="diff_wheel" xmlns:xacro="http://wiki.ros.org/xacro">
 
     <!-- differential drive macro -->
-    <xacro:macro name="diff_wheel" params=" wheeldiam h wheel_separation parent friction rgb odom_topic:=odom">
+    <xacro:macro name="diff_wheel" params=" wheeldiam h wheel_separation parent friction rgb odom_topic:=odom pub_tf:=true">
         <xacro:cylinder_shape name="left_wheel" r="${wheeldiam/2}" h="${h}" ori="0 0 0" rpy="0 0 0" rgb="${rgb}" m="0.1" friction="${friction}"/>
         <joint name="left_wheel_joint" type="continuous">
             <axis xyz="0 0 1" rpy="0 0 0" />
@@ -69,7 +69,7 @@
 
             <!-- Set to true to swap right and left wheels, defaults to true -->
             <legacyMode>false</legacyMode>
-            <publishOdomTF>true</publishOdomTF>
+            <publishOdomTF>${pub_tf}</publishOdomTF>
             <publishTf>true</publishTf>
             <rosDebugLevel>na</rosDebugLevel>
         </plugin>
