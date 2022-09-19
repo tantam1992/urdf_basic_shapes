@@ -59,7 +59,7 @@
             <odometrySource>world</odometrySource>
 
             <!-- Set to true to publish transforms for the wheel links, defaults to false -->
-            <publishWheelTF>true</publishWheelTF>
+            <publishWheelTF>false</publishWheelTF>
 
             <!-- Set to true to publish transforms for the odometry, defaults to true -->
             <publishOdom>true</publishOdom>
