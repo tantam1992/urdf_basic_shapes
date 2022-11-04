@@ -18,7 +18,7 @@ def generate_launch_description():
     default_model_path = os.path.join(pkg_share, 'examples/basic_example.urdf.xacros') 
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
 
-    gui_arg = DeclareLaunchArgument(name='gui', default_value='true', choices=['true', 'false'],
+    gui_arg = DeclareLaunchArgument(name='gui', default_value='false', choices=['true', 'false'],
                                     description='Flag to enable joint_state_publisher_gui')
     model_arg = DeclareLaunchArgument(name='model', default_value=str(default_model_path),
                                       description='Absolute path to robot urdf file')
