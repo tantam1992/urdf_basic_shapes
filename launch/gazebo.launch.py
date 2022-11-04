@@ -1,7 +1,7 @@
 # from ament_index_python.packages import get_package_share_path
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import Command, LaunchConfiguration
 
@@ -46,6 +46,13 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('gui'))
     )
 
+    spawn_entity = launch_ros.actions.Node(
+    	package='gazebo_ros', 
+    	executable='spawn_entity.py',
+        arguments=['-entity', 'sam_bot', '-topic', 'robot_description'],
+        output='screen'
+    )
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -55,11 +62,13 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'], output='screen'),
         gui_arg,
         model_arg,
         rviz_arg,
         joint_state_publisher_node,
         joint_state_publisher_gui_node,
         robot_state_publisher_node,
+        spawn_entity,
         rviz_node
     ])

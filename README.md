@@ -2,7 +2,7 @@
 
 ## installation
 1. `sudo apt install ros-humble-velodyne-description`  
-
+2. `sudo apt install ros-humble-velodyne-simulator`
 
 library for basic urdf shapes. Create urdf robots and sensors simple.   
 
