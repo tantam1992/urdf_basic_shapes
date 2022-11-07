@@ -54,11 +54,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        ball1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_footprint:
           Alpha: 1
           Show Axes: false
@@ -68,34 +63,44 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera:
+        butt:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        casterwheel:
+        cameraL:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        cylinder1:
+        cameraL_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        cameraR:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        hokuyo_scan:
+        cameraR_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        casterwheel_back:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        imu:
+        casterwheel_front:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
+        head:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_wheel:
           Alpha: 1
           Show Axes: false
@@ -106,11 +111,20 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        rplidar:
+        scan:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
+        screen:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wit/Imu:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -124,31 +138,35 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        ball1:
-          Value: true
         base_footprint:
           Value: true
         base_link:
           Value: true
-        camera:
+        butt:
           Value: true
-        camera_depth_frame:
+        cameraL:
           Value: true
-        casterwheel:
+        cameraL_depth_frame:
           Value: true
-        cylinder1:
+        cameraR:
           Value: true
-        hokuyo_scan:
+        cameraR_depth_frame:
           Value: true
-        imu:
+        casterwheel_back:
+          Value: true
+        casterwheel_front:
+          Value: true
+        head:
           Value: true
         left_wheel:
           Value: true
-        odom:
-          Value: true
         right_wheel:
           Value: true
-        rplidar:
+        scan:
+          Value: true
+        screen:
+          Value: true
+        wit/Imu:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -156,28 +174,32 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        odom:
-          base_footprint:
-            base_link:
-              ball1:
+        base_footprint:
+          base_link:
+            butt:
+              {}
+            cameraL:
+              cameraL_depth_frame:
                 {}
-              camera:
-                camera_depth_frame:
-                  {}
-              casterwheel:
+            cameraR:
+              cameraR_depth_frame:
                 {}
-              cylinder1:
-                {}
-              hokuyo_scan:
-                {}
-              imu:
-                {}
-              left_wheel:
-                {}
-              right_wheel:
-                {}
-              rplidar:
-                {}
+            casterwheel_back:
+              {}
+            casterwheel_front:
+              {}
+            head:
+              {}
+            left_wheel:
+              {}
+            right_wheel:
+              {}
+            scan:
+              {}
+            screen:
+              {}
+            wit/Imu:
+              {}
       Update Interval: 0
       Value: true
     - Class: rviz_default_plugins/Image
@@ -292,14 +314,14 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /depth_camera/points
+        Value: /depth_cameraR/points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: base_footprint
     Frame Rate: 30
   Name: root
   Tools:
@@ -311,37 +333,37 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 5.386070251464844
+      Distance: 7.061826705932617
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.3598074913024902
-        Y: 1.507120132446289
-        Z: 2.2165932655334473
+        X: 0.16783109307289124
+        Y: 1.8888943195343018
+        Z: 0.9620391130447388
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.46999937295913696
+      Pitch: 0.42499950528144836
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.8650022745132446
+      Yaw: 1.1650031805038452
     Saved: ~
 Window Geometry:
   Displays:
-    collapsed: true
+    collapsed: false
   Height: 1043
-  Hide Left Dock: true
+  Hide Left Dock: false
   Hide Right Dock: false
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001cb000003b9fc0200000003fb000000100044006900730070006c006100790073000000003d000003b9000000c900fffffffb0000000a0056006900650077007300000001d800000106000000a400fffffffb0000000a0049006d006100670065000000027e0000015d0000002800ffffff000003c0000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001cb000003b9fc0200000003fb000000100044006900730070006c006100790073010000003d000003b9000000c900fffffffb0000000a0056006900650077007300000001d800000106000000a400fffffffb0000000a0049006d006100670065000000027e0000015d0000002800ffffff000005af000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 960
-  X: 960
+  Width: 1920
+  X: 0
   Y: 0
