@@ -57,8 +57,8 @@
     <xacro:velodyne16 name="velodyne" xyz="-1 0 1.5" rpy="0 0 0" parent="base_link"/> -->
 
     <!-- imu -->
-    <!-- <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
-    <xacro:imu name="imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/> -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
+    <xacro:imu name="imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
 
     <!-- depth_cam -->
     <!-- <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
