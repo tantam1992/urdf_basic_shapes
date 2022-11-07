@@ -16,7 +16,7 @@ or to launch rviz together with gazebo simulator
 `ros2 launch urdf_basic_shapes display.launch.py`  
 `ros2 launch urdf_basic_shapes gazebo.launch.py`  
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/basic_example_rviz.png)
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/basic_example_gazebo.png)
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/basic_example_gazebo1.png)
 
 
 **TODO: have to provide absolute path for model**  
