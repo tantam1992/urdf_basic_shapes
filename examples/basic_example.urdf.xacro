@@ -61,7 +61,7 @@
     <xacro:imu name="imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
 
     <!-- depth_cam -->
-    <!-- <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
-    <xacro:depth_cam name="camera" xyz="1 0 .5" rpy="0 0 0" parent="base_link"/> -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
+    <xacro:depth_cam name="camera" xyz="1 0 .5" rpy="0 0 0" parent="base_link"/>
 
 </robot>

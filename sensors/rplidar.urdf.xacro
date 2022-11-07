@@ -4,7 +4,7 @@
     <xacro:macro name="rplidar" params="name xyz rpy parent topic">
         <link name="${name}">
             <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0.01"/>
             <geometry>
                 <cylinder radius="0.0575" length="0.05"/>
                 <!-- <mesh filename="package://urdf_basic_shapes/meshes/rplidar.stl" scale=".002 .002 .002"/> -->
@@ -49,7 +49,7 @@
                     <remapping>~/out:=${name}</remapping>
                 </ros>
                 <output_type>sensor_msgs/LaserScan</output_type>
-                <frame_name>laser_link</frame_name>
+                <frame_name>${name}</frame_name>
                 </plugin>
             </sensor>
         </gazebo>
