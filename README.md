@@ -16,15 +16,15 @@ or to launch rviz together with gazebo simulator
 `ros2 launch urdf_basic_shapes display.launch.py`  
 `ros2 launch urdf_basic_shapes gazebo.launch.py`  
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/basic_example_rviz.png)
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/basic_example_gazebo.png)
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/basic_example_gazebo.png)
 
 
 **TODO: have to provide absolute path for model**  
 `ros2 launch urdf_basic_shapes gazebo.launch.py model:=src/urdf_basic_shapes/examples/deliverybot.urdf.xacro`  
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/deliverybot_rviz.png)
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/deliverybot_gazebo.png) 
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/deliverybot_gazebo.png) 
 
 **TODO: have to provide absolute path for model**  
 `ros2 launch urdf_basic_shapes gazebo.launch.py model:=src/urdf_basic_shapes/examples/tko_robot.urdf.xacro`  
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/tko_robot_rviz.png)
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/tko_robot_gazebo.png)
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/tko_robot_gazebo.png)
