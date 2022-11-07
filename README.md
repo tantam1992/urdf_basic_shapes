@@ -8,10 +8,10 @@ e.g.
 
 ## Examples
 `roslaunch urdf_basic_shapes display.launch model:=basic_example`  
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/basic_example_rviz.png)
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/melodic-devel/include/images/basic_example_rviz.png)
 
 `roslaunch urdf_basic_shapes display.launch model:=deliverybot`  
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/deliverybot_rviz.png)  
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/melodic-devel/include/images/deliverybot_rviz.png)  
 
 `roslaunch urdf_basic_shapes display.launch model:=tko_robot`  
-![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/tko_robot_rviz.png)
+![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/melodic-devel/include/images/tko_robot_rviz.png)
