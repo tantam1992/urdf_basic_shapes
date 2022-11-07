@@ -14,6 +14,7 @@ import os
 
 
 def generate_launch_description():
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     pkg_share = launch_ros.substitutions.FindPackageShare(package='urdf_basic_shapes').find('urdf_basic_shapes')
     default_model_path = os.path.join(pkg_share, 'examples/basic_example.urdf.xacro') 
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
@@ -30,19 +31,21 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'robot_description': robot_description}]
+        parameters=[{'robot_description': robot_description, 'use_sim_time': use_sim_time}]
     )
 
     # Depending on gui parameter, either launch joint_state_publisher or joint_state_publisher_gui
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
+        parameters=[{'use_sim_time': use_sim_time}],
         condition=UnlessCondition(LaunchConfiguration('gui'))
     )
 
     joint_state_publisher_gui_node = Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
+        parameters=[{'use_sim_time': use_sim_time}],
         condition=IfCondition(LaunchConfiguration('gui'))
     )
 
