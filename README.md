@@ -24,7 +24,8 @@ or to launch rviz together with gazebo simulator
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/deliverybot_rviz.png)
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/deliverybot_gazebo.png) 
 
-**TODO: have to provide absolute path for model**  
+**TODO: have to provide absolute path for model** 
+**TODO: remove STL from velodyne lidar**  
 `ros2 launch urdf_basic_shapes gazebo.launch.py model:=src/urdf_basic_shapes/examples/tko_robot.urdf.xacro`  
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/main/include/images/tko_robot_rviz.png)
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/tko_robot_gazebo.png)
