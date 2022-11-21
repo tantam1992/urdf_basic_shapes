@@ -182,19 +182,19 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.4 0.5 0.4"/>
+        <box size="0.3 0.5 0.4"/>
       </geometry>
       <material name="White"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.4 0.5 0.4"/>
+        <box size="0.3 0.5 0.4"/>
       </geometry>
     </collision>
     <inertial>
       <mass value="1"/>
-      <inertia ixx="0.03416666666666667" ixy="0" ixz="0" iyy="0.026666666666666672" iyz="0" izz="0.03416666666666667"/>
+      <inertia ixx="0.03416666666666667" ixy="0" ixz="0" iyy="0.020833333333333332" iyz="0" izz="0.028333333333333332"/>
     </inertial>
   </link>
   <gazebo reference="butt">
@@ -210,7 +210,7 @@
   <joint name="butt_joint" type="fixed">
     <parent link="base_link"/>
     <child link="butt"/>
-    <origin rpy="0 0 0" xyz="-.1 0 0.2"/>
+    <origin rpy="0 0 0" xyz="0 0 0.2"/>
   </joint>
   <link name="head">
     <visual>
@@ -342,6 +342,15 @@
       <!-- <publish_wheel_joint_state>true</publish_wheel_joint_state> -->
       <!-- <publish_tf>true</publish_tf> -->
     </plugin>
+    <plugin filename="libgazebo_ros_joint_state_publisher.so" name="turtlebot3_joint_state">
+      <ros>
+        <!-- <namespace>/tb3</namespace> -->
+        <remapping>~/out:=joint_states</remapping>
+      </ros>
+      <update_rate>30</update_rate>
+      <joint_name>left_wheel_joint</joint_name>
+      <joint_name>right_wheel_joint</joint_name>
+    </plugin>
   </gazebo>
   <link name="casterwheel_back">
     <visual>
@@ -411,7 +420,7 @@
     <child link="casterwheel_front"/>
     <origin rpy="0 0 0" xyz=".25 0 -.0"/>
   </joint>
-  <link name="scan">
+  <link name="front_scan">
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -431,15 +440,15 @@
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
     </inertial>
   </link>
-  <joint name="scan_joint" type="fixed">
+  <joint name="front_scan_joint" type="fixed">
     <axis xyz="0 1 0"/>
     <origin rpy="0 3.141592653589793 0" xyz=".25 0 .05"/>
     <parent link="base_link"/>
-    <child link="scan"/>
+    <child link="front_scan"/>
   </joint>
   <!-- hokuyo -->
-  <gazebo reference="scan">
-    <sensor name="scan_hokuyo_sensor" type="ray">
+  <gazebo reference="front_scan">
+    <sensor name="front_scan_hokuyo_sensor" type="ray">
       <always_on>true</always_on>
       <visualize>true</visualize>
       <update_rate>10</update_rate>
@@ -463,12 +472,73 @@
           <stddev>0.05</stddev>
         </noise>
       </ray>
-      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_scan_controller">
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_front_scan_controller">
         <ros>
-          <remapping>~/out:=scan</remapping>
+          <remapping>~/out:=front_scan</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>scan</frame_name>
+        <frame_name>front_scan</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <link name="back_scan">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+        <!-- <mesh filename="package://urdf_basic_shapes/meshes/hokuyo.dae"/> -->
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1e-5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+  </link>
+  <joint name="back_scan_joint" type="fixed">
+    <axis xyz="0 1 0"/>
+    <origin rpy="0 0 0" xyz="-.25 0 .05"/>
+    <parent link="base_link"/>
+    <child link="back_scan"/>
+  </joint>
+  <!-- hokuyo -->
+  <gazebo reference="back_scan">
+    <sensor name="back_scan_hokuyo_sensor" type="ray">
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>0.000000</min_angle>
+            <max_angle>6.280000</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.120000</min>
+          <max>40</max>
+          <resolution>0.030000</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.05</stddev>
+        </noise>
+      </ray>
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_back_scan_controller">
+        <ros>
+          <remapping>~/out:=back_scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>back_scan</frame_name>
       </plugin>
     </sensor>
   </gazebo>
@@ -571,7 +641,7 @@
   <joint name="cameraL_joint" type="fixed">
     <parent link="base_link"/>
     <child link="cameraL"/>
-    <origin rpy="0 -0.7853981633974483 0.7853981633974483" xyz=".19 0.18 .3"/>
+    <origin rpy="0 0 0.7853981633974483" xyz=".19 0.18 .3"/>
   </joint>
   <link name="cameraL_depth_frame"/>
   <joint name="cameraL_depth_joint" type="fixed">
@@ -637,7 +707,7 @@
   <joint name="cameraR_joint" type="fixed">
     <parent link="base_link"/>
     <child link="cameraR"/>
-    <origin rpy="3.141592653589793 -0.7853981633974483 -0.7853981633974483" xyz=".19 -.18 .3"/>
+    <origin rpy="3.141592653589793 0 -0.7853981633974483" xyz=".19 -.18 .3"/>
   </joint>
   <link name="cameraR_depth_frame"/>
   <joint name="cameraR_depth_joint" type="fixed">
