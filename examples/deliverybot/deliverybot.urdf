@@ -420,7 +420,7 @@
     <child link="casterwheel_front"/>
     <origin rpy="0 0 0" xyz=".25 0 -.0"/>
   </joint>
-  <link name="front_scan">
+  <link name="scan_front">
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -440,15 +440,15 @@
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
     </inertial>
   </link>
-  <joint name="front_scan_joint" type="fixed">
+  <joint name="scan_front_joint" type="fixed">
     <axis xyz="0 1 0"/>
     <origin rpy="0 3.141592653589793 0" xyz=".25 0 .05"/>
     <parent link="base_link"/>
-    <child link="front_scan"/>
+    <child link="scan_front"/>
   </joint>
   <!-- hokuyo -->
-  <gazebo reference="front_scan">
-    <sensor name="front_scan_hokuyo_sensor" type="ray">
+  <gazebo reference="scan_front">
+    <sensor name="scan_front_hokuyo_sensor" type="ray">
       <always_on>true</always_on>
       <visualize>true</visualize>
       <update_rate>10</update_rate>
@@ -472,16 +472,16 @@
           <stddev>0.05</stddev>
         </noise>
       </ray>
-      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_front_scan_controller">
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_scan_front_controller">
         <ros>
-          <remapping>~/out:=front_scan</remapping>
+          <remapping>~/out:=scan_front</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>front_scan</frame_name>
+        <frame_name>scan_front</frame_name>
       </plugin>
     </sensor>
   </gazebo>
-  <link name="back_scan">
+  <link name="scan_back">
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -501,15 +501,15 @@
       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
     </inertial>
   </link>
-  <joint name="back_scan_joint" type="fixed">
+  <joint name="scan_back_joint" type="fixed">
     <axis xyz="0 1 0"/>
     <origin rpy="0 0 0" xyz="-.25 0 .05"/>
     <parent link="base_link"/>
-    <child link="back_scan"/>
+    <child link="scan_back"/>
   </joint>
   <!-- hokuyo -->
-  <gazebo reference="back_scan">
-    <sensor name="back_scan_hokuyo_sensor" type="ray">
+  <gazebo reference="scan_back">
+    <sensor name="scan_back_hokuyo_sensor" type="ray">
       <always_on>true</always_on>
       <visualize>true</visualize>
       <update_rate>10</update_rate>
@@ -533,12 +533,12 @@
           <stddev>0.05</stddev>
         </noise>
       </ray>
-      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_back_scan_controller">
+      <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_scan_back_controller">
         <ros>
-          <remapping>~/out:=back_scan</remapping>
+          <remapping>~/out:=scan_back</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>back_scan</frame_name>
+        <frame_name>scan_back</frame_name>
       </plugin>
     </sensor>
   </gazebo>
