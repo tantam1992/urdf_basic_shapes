@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="hokuyo" xmlns:xacro="http://wiki.ros.org/xacro">
-    <xacro:macro name="hokuyo" params="name parent xyz rpy min_a max_a">
+    <xacro:macro name="hokuyo" params="name parent xyz rpy min_a max_a topic">
         <link name="${name}">
             <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -59,7 +59,7 @@
                 </ray>
                 <plugin name="gazebo_ros_${name}_controller" filename="libgazebo_ros_ray_sensor.so">
                 <ros>
-                    <remapping>~/out:=${name}</remapping>
+                    <remapping>~/out:=${topic}</remapping>
                 </ros>
                 <output_type>sensor_msgs/LaserScan</output_type>
                 <frame_name>${name}</frame_name>

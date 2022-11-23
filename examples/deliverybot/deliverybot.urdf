@@ -474,7 +474,7 @@
       </ray>
       <plugin filename="libgazebo_ros_ray_sensor.so" name="gazebo_ros_scan_front_controller">
         <ros>
-          <remapping>~/out:=scan_front</remapping>
+          <remapping>~/out:=scan</remapping>
         </ros>
         <output_type>sensor_msgs/LaserScan</output_type>
         <frame_name>scan_front</frame_name>
