@@ -2,6 +2,10 @@
 
 library for basic urdf shapes. Create urdf robots and sensors simple.   
 
+## installation
+1. `sudo apt install ros-melodic-velodyne-description`  
+2. `sudo apt install ros-melodic-velodyne-simulator`  
+
 e.g.  
 `roslaunch urdf_basic_shapes display.launch`  
 `roslaunch urdf_basic_shapes gazebo.launch`  
