@@ -56,17 +56,17 @@
     
     <!-- Hokuyo Laser Back-->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
-    <xacro:hokuyo name="scan_back" xyz="-1.017 0 0" rpy="${pi} 0 ${pi}" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}"/>
+    <xacro:hokuyo name="scan_back" xyz="-1.017 0 0" rpy="${pi} 0 ${pi}" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}" topic="scan_back"/>
     <!-- Hokuyo Laser Left-->
-    <xacro:hokuyo name="scan_left" xyz=".14 0.43 .077" rpy="0 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi}"/>
+    <xacro:hokuyo name="scan_left" xyz=".14 0.43 .077" rpy="0 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi}" topic="scan_left"/>
     <!-- Hokuyo Laser Right-->
-    <xacro:hokuyo name="scan_right" xyz=".14 -0.43 .162" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi/2}"/>
+    <xacro:hokuyo name="scan_right" xyz=".14 -0.43 .162" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi/2}" topic="scan_right"/>
 
     <!-- Veldoyne Lidar  -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/velodyne.urdf.xacro"/>
     <xacro:velodyne16 name="velodyne" xyz="0 0 1.392" rpy="0 0 0" parent="base_link"/>
     <!-- add scan topic to velodyne lidar-->
-    <xacro:hokuyo name="velodyne_2d" xyz="0 0 1.392" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}"/>
+    <xacro:hokuyo name="olei_lidar" xyz="0 0 1.392" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="scan"/>
 
     <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
