@@ -6,8 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Image1
+        - /LaserScan1
         - /LaserScan1/Topic1
+        - /LaserScan2
         - /PointCloud21
+        - /PointCloud21/Topic1
       Splitter Ratio: 0.5
     Tree Height: 822
   - Class: rviz_common/Views
@@ -63,44 +66,20 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        butt:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cameraL:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cameraL_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        cameraR:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cameraR_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         casterwheel_back:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        casterwheel_front:
+        cylinder:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        head:
+        imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         left_wheel:
           Alpha: 1
           Show Axes: false
@@ -111,7 +90,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        scan:
+        scan_back:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        scan_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        scan_right:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -121,10 +110,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        wit/Imu:
+        tail:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
+        velodyne:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_2d:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -142,31 +147,33 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        butt:
-          Value: true
-        cameraL:
-          Value: true
-        cameraL_depth_frame:
-          Value: true
-        cameraR:
-          Value: true
-        cameraR_depth_frame:
-          Value: true
         casterwheel_back:
           Value: true
-        casterwheel_front:
+        cylinder:
           Value: true
-        head:
+        imu:
           Value: true
         left_wheel:
           Value: true
+        odom:
+          Value: true
         right_wheel:
           Value: true
-        scan:
+        scan_back:
+          Value: true
+        scan_left:
+          Value: true
+        scan_right:
           Value: true
         screen:
           Value: true
-        wit/Imu:
+        tail:
+          Value: true
+        velodyne:
+          Value: true
+        velodyne_2d:
+          Value: true
+        velodyne_base_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -176,30 +183,33 @@ Visualization Manager:
       Tree:
         base_footprint:
           base_link:
-            butt:
-              {}
-            cameraL:
-              cameraL_depth_frame:
-                {}
-            cameraR:
-              cameraR_depth_frame:
-                {}
             casterwheel_back:
               {}
-            casterwheel_front:
+            cylinder:
               {}
-            head:
+            imu:
               {}
             left_wheel:
               {}
             right_wheel:
               {}
-            scan:
+            scan_back:
+              {}
+            scan_left:
+              {}
+            scan_right:
               {}
             screen:
               {}
-            wit/Imu:
+            tail:
               {}
+            velodyne_2d:
+              {}
+            velodyne_base_link:
+              velodyne:
+                {}
+        odom:
+          {}
       Update Interval: 0
       Value: true
     - Class: rviz_default_plugins/Image
@@ -232,7 +242,7 @@ Visualization Manager:
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 0
-      Min Color: 0; 0; 0
+      Min Color: 28; 113; 216
       Min Intensity: 0
       Name: LaserScan
       Position Transformer: XYZ
@@ -246,9 +256,9 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: System Default
-        Value: /rplidar
+        Value: /scan_back
       Use Fixed Frame: true
-      Use rainbow: true
+      Use rainbow: false
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -266,7 +276,7 @@ Visualization Manager:
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 0
-      Min Color: 0; 0; 0
+      Min Color: 25; 255; 0
       Min Intensity: 0
       Name: LaserScan
       Position Transformer: XYZ
@@ -280,9 +290,9 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: System Default
-        Value: /hokuyo_scan
+        Value: /scan_left
       Use Fixed Frame: true
-      Use rainbow: true
+      Use rainbow: false
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -294,27 +304,27 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz_default_plugins/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: RGB8
+      Color Transformer: Intensity
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
+      Max Intensity: 0
       Min Color: 0; 0; 0
       Min Intensity: 0
       Name: PointCloud2
       Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.05000000074505806
       Style: Flat Squares
       Topic:
         Depth: 5
         Durability Policy: Volatile
         Filter size: 10
         History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /depth_cameraR/points
+        Reliability Policy: Best Effort
+        Value: /velodyne_points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -333,25 +343,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 7.061826705932617
+      Distance: 27.846132278442383
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.16783109307289124
-        Y: 1.8888943195343018
-        Z: 0.9620391130447388
+        X: 0.8658974170684814
+        Y: 0.9075574278831482
+        Z: 1.1253767013549805
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.42499950528144836
+      Pitch: 0.31499961018562317
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.1650031805038452
+      Yaw: 1.825002908706665
     Saved: ~
 Window Geometry:
   Displays:

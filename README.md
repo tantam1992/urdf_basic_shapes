@@ -20,7 +20,8 @@ or to launch rviz together with gazebo simulator
 
 
 **TODO: have to provide absolute path for model**  
-`ros2 launch urdf_basic_shapes gazebo.launch.py model:=src/urdf_basic_shapes/examples/deliverybot.urdf.xacro`  
+inside **urdf_basic_shapes** run  
+`ros2 launch urdf_basic_shapes gazebo.launch.py model:=examples/deliverybot/deliverybot.urdf.xacro` 
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/melodic-devel/include/images/deliverybot_rviz.png)
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/deliverybot_gazebo.png) 
 
