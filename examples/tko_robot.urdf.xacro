@@ -49,7 +49,7 @@
     <joint name="joint_casterwheel_back" type="fixed">
         <parent link="base_link"/>
         <child link="casterwheel_back"/>
-        <origin xyz="-.885 0 -.035" rpy="0 0 0"/>
+        <origin xyz="-.885 0 -.03" rpy="0 0 0"/>
     </joint>
  
 
