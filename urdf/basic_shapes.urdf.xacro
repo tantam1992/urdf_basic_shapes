@@ -71,6 +71,26 @@
     <xacro:gazebo_params name="${name}" rgb="${rgb}" friction="${friction}"/>
   </xacro:macro>
 
+  <xacro:macro name="wheel" params="name r h ori rpy rgb m friction">
+    <link name="${name}">
+        <visual>
+          <origin xyz="${ori}" rpy="${rpy}"/>
+          <geometry>
+              <cylinder radius="${r}" length="${h}"/>
+          </geometry>
+          <material name="${rgb}"/>
+        </visual>
+        <collision>
+        <origin xyz="${ori}" rpy="${rpy}" />
+        <geometry>
+            <sphere radius="${r}" />   <!--use shpere here to reduce the point of contract to a infinit small point--> 
+        </geometry>
+        </collision>
+        <xacro:solid_cylinder_inertia m="${m}" r="${r}" h="${h}"/>
+    </link>
+    <xacro:gazebo_params name="${name}" rgb="${rgb}" friction="${friction}"/>
+  </xacro:macro>
+
   
 
 </robot>

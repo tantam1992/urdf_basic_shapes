@@ -114,8 +114,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.1</mu>
-              <mu2>0.1</mu2>
+              <mu>0.001</mu>
+              <mu2>0.001</mu2>
               <fdir1>1 0 0</fdir1>
             </ode>
           </friction>
@@ -139,8 +139,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.1</mu>
-              <mu2>0.1</mu2>
+              <mu>0.001</mu>
+              <mu2>0.001</mu2>
               <fdir1>1 0 0</fdir1>
             </ode>
           </friction>
@@ -582,10 +582,9 @@
       <collision name='left_wheel_collision'>
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
-          <cylinder>
-            <length>0.05</length>
+          <sphere>
             <radius>0.1</radius>
-          </cylinder>
+          </sphere>
         </geometry>
         <surface>
           <contact>
@@ -598,8 +597,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1000</mu>
-              <mu2>1000</mu2>
+              <mu>10000</mu>
+              <mu2>10000</mu2>
               <fdir1>1 0 0</fdir1>
             </ode>
           </friction>
@@ -654,10 +653,9 @@
       <collision name='right_wheel_collision'>
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
-          <cylinder>
-            <length>0.05</length>
+          <sphere>
             <radius>0.1</radius>
-          </cylinder>
+          </sphere>
         </geometry>
         <surface>
           <contact>
@@ -670,8 +668,8 @@
           </contact>
           <friction>
             <ode>
-              <mu>1000</mu>
-              <mu2>1000</mu2>
+              <mu>10000</mu>
+              <mu2>10000</mu2>
               <fdir1>1 0 0</fdir1>
             </ode>
           </friction>

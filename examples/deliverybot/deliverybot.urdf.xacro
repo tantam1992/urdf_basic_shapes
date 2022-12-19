@@ -42,7 +42,7 @@
     <!-- diff drive -->
     <!-- the parent link should be the center of wheel axis -->
     <xacro:include filename="$(find urdf_basic_shapes)/urdf/diff_wheel.urdf.xacro"/>
-    <xacro:diff_wheel wheeldiam="0.2" h=".05" wheel_separation=".38" parent="base_link" friction="1000" rgb="Black" odom_topic="odom" pub_tf="false"/>
+    <xacro:diff_wheel wheeldiam="0.2" h=".05" wheel_separation=".38" parent="base_link" friction="${wheel_friction}" rgb="Black" odom_topic="odom" pub_tf="false"/>
 
     <!-- caster wheel back -->
     <xacro:ball name="casterwheel_back" r="0.1" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".1" friction="${sliding_friction}"/>
