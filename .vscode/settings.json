@@ -1,0 +1,18 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/u/ros2/deliverybot2_ws/build/simple_nav",
+        "/home/u/ros2/deliverybot2_ws/install/simple_nav/lib/python3.10/site-packages",
+        "/home/u/ros2/deliverybot2_ws/build/ros_zlac_8015_driver",
+        "/home/u/ros2/deliverybot2_ws/install/ros_zlac_8015_driver/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/u/ros2/deliverybot2_ws/build/simple_nav",
+        "/home/u/ros2/deliverybot2_ws/install/simple_nav/lib/python3.10/site-packages",
+        "/home/u/ros2/deliverybot2_ws/build/ros_zlac_8015_driver",
+        "/home/u/ros2/deliverybot2_ws/install/ros_zlac_8015_driver/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

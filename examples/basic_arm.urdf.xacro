@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot name="deliverybot" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- basic shapes -->
+    <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.urdf.xacro"/>
+
+
+    <link name="base_footprint"/>
+
+    <!--cylinder base_link -->
+    <xacro:cylinder_shape name="base_link" r="0.25" h="0.05" ori="0 0 .025" rpy="0 0 0" rgb="Grey" m="10" friction="${standard_friction}"/>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+    </joint>
+
+    <!--cylinder rot_base -->
+    <xacro:cylinder_shape name="rot_base" r="0.05" h="0.05" ori="0 0 .025" rpy="0 0 0" rgb="Red" m="1" friction="${standard_friction}"/>
+    <joint name="rot_base_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="rot_base"/>
+        <axis xyz="0 0 1"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    </joint>
+
+    <!-- cubeical upper_arm -->
+    <xacro:cube name="arm1" x="0.02" y="0.02" z="0.3" ori="0.0 0.0 0.15" rpy="0 0 0" rgb="Red" m=".1" friction="${standard_friction}"/>
+    <joint name="arm1_joint" type="continuous">
+        <parent link="rot_base"/>
+        <child link="arm1"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="0"
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    </joint>
+
+    <!-- cubeical lower_arm -->
+    <xacro:cube name="arm2" x="0.02" y="0.02" z="0.3" ori="0.0 0.0 0.15" rpy="0 0 0" rgb="Red" m=".1" friction="${standard_friction}"/>
+    <joint name="arm2_joint" type="continuous">
+        <parent link="arm1"/>
+        <child link="arm2"/>
+        <axis xyz="0 1 0"/>
+        <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    </joint>
+    
+
+</robot>

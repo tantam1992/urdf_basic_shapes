@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /TF1
         - /Image1
         - /LaserScan1
         - /LaserScan1/Topic1
@@ -66,66 +67,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        casterwheel_back:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cylinder:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        imu:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        left_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        scan_back:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        scan_left:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        scan_right:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        screen:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tail:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_2d:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        velodyne_base_link:
+        rot_base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -147,69 +89,18 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        casterwheel_back:
-          Value: true
-        cylinder:
-          Value: true
-        imu:
-          Value: true
-        left_wheel:
-          Value: true
-        odom:
-          Value: true
-        right_wheel:
-          Value: true
-        scan_back:
-          Value: true
-        scan_left:
-          Value: true
-        scan_right:
-          Value: true
-        screen:
-          Value: true
-        tail:
-          Value: true
-        velodyne:
-          Value: true
-        velodyne_2d:
-          Value: true
-        velodyne_base_link:
+        rot_base:
           Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
         base_footprint:
           base_link:
-            casterwheel_back:
+            rot_base:
               {}
-            cylinder:
-              {}
-            imu:
-              {}
-            left_wheel:
-              {}
-            right_wheel:
-              {}
-            scan_back:
-              {}
-            scan_left:
-              {}
-            scan_right:
-              {}
-            screen:
-              {}
-            tail:
-              {}
-            velodyne_2d:
-              {}
-            velodyne_base_link:
-              velodyne:
-                {}
-        odom:
-          {}
       Update Interval: 0
       Value: true
     - Class: rviz_default_plugins/Image
@@ -343,25 +234,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 27.846132278442383
+      Distance: 0.27415063977241516
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.8658974170684814
-        Y: 0.9075574278831482
-        Z: 1.1253767013549805
+        X: -0.31921035051345825
+        Y: 0.8768530488014221
+        Z: 0.28056004643440247
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.31499961018562317
+      Pitch: 0.27999964356422424
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.825002908706665
+      Yaw: 1.9550029039382935
     Saved: ~
 Window Geometry:
   Displays:
