@@ -63,15 +63,17 @@
     <!-- Hokuyo Laser Right-->
     <xacro:hokuyo name="scan_right" xyz=".14 -0.43 .162" rpy="0 0 -${pi/4}" parent="base_link" min_a="${-pi}" max_a="${pi/2}" topic="scan_right"/>
 
-    <!-- Veldoyne Lidar  -->
+    <!-- TOP 3D Olei Lidar  -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/velodyne.urdf.xacro"/>
-    <xacro:velodyne16 name="velodyne" xyz="0 0 1.392" rpy="0 0 0" parent="base_link"/>
+    <xacro:velodyne16 name="olei" xyz="0 0 1.392" rpy="0 0 0" parent="base_link"/>
     <!-- add scan topic to velodyne lidar-->
     <xacro:hokuyo name="olei_lidar" xyz="0 0 1.392" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="scan"/>
+    <!-- TOP 3D Olei Lidar  -->
+    <xacro:velodyne16 name="olei_vertical" xyz="0.2 0 1" rpy="0 ${pi*1/4} 0" parent="base_link"/>
 
     <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
-    <xacro:imu name="imu" xyz="0 0 .5" rpy="0 0 0" parent="base_link"/>
+    <xacro:imu name="imu" xyz="0 0 0" rpy="0 0 0" parent="base_link"/>
 
 
 </robot>
