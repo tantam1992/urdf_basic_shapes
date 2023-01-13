@@ -68,8 +68,8 @@
     <xacro:velodyne16 name="olei" xyz="0 0 1.392" rpy="0 0 0" parent="base_link"/>
     <!-- add scan topic to velodyne lidar-->
     <xacro:hokuyo name="olei_lidar" xyz="0 0 1.392" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="scan"/>
-    <!-- TOP 3D Olei Lidar  -->
-    <xacro:velodyne16 name="olei_vertical" xyz="0.2 0 1" rpy="0 ${pi*1/4} 0" parent="base_link"/>
+    <!-- VERTICAL 3D Olei Lidar  -->
+    <!-- <xacro:velodyne16 name="olei_vertical" xyz="0.2 0 1" rpy="0 ${pi*1/4} 0" parent="base_link"/> -->
 
     <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
