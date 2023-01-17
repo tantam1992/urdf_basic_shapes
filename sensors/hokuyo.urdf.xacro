@@ -32,10 +32,10 @@
 
         <!-- hokuyo -->
         <gazebo reference="${name}">
-            <sensor type="gpu_ray" name="${name}_hokuyo_sensor">
+            <sensor type="ray" name="${name}_hokuyo_sensor">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
-            <update_rate>40</update_rate>
+            <update_rate>10</update_rate>
             <ray>
                 <scan>
                 <horizontal>
@@ -60,7 +60,7 @@
                 <stddev>0.01</stddev>
                 </noise>
             </ray>
-            <plugin name="gazebo_ros_${name}_controller" filename="libgazebo_ros_gpu_laser.so">
+            <plugin name="gazebo_ros_${name}_controller" filename="libgazebo_ros_laser.so">
                 <topicName>${topic}</topicName>
                 <frameName>${name}</frameName>
             </plugin>
