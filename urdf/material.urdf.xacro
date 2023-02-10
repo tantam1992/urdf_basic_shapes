@@ -16,7 +16,7 @@
   <material name="White">
     <color rgba="1 1 1 1"/>
   </material>
-  <material name="Grey">
+  <material name="Gray">
     <color rgba="0.8 0.8 0.8 1"/>
   </material>
   <material name="Yellow">
@@ -34,6 +34,6 @@
   <material name="Cyan">
     <color rgba="0 1 1 1"/>
   </material>
-  
+
 
 </robot>

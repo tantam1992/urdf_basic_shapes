@@ -29,7 +29,7 @@
   <rosparam command="load" file="$(find urdf_basic_shapes)/config/diffdrive_tko.yaml" ns="diff_drive_controller" />
   <!-- joint_state publisher -->
   <rosparam command="load" file="$(find urdf_basic_shapes)/config/joints.yaml" ns="joint_state_controller" />
-
+  <!-- ros controller manager -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" args="diff_drive_controller
         joint_state_controller
         --shutdown-timeout 3"/>
