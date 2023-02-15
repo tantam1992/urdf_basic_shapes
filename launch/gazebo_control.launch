@@ -32,6 +32,7 @@
         joint_state_controller
         --shutdown-timeout 3"/>
 
+  <!-- steering gui -->
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
     <param name="default_topic" value="/diff_drive_controller/cmd_vel"/>
   </node>
