@@ -4,7 +4,9 @@ publish_rate: 200
 left_wheel: left_wheel_joint
 right_wheel: right_wheel_joint
 
-wheel_separation: 0.78
+# wheel_separation: 0.78 # get value from urdf
+enable_odom_tf: false
+cmd_vel_timeout: 0.2
 
 # Odometry covariances for the encoder output of the robot. These values should
 # be tuned to your robot's sample odometry data, but these values are a good place

@@ -24,17 +24,17 @@
 
   <!-- joint controller  -->
   <!-- diff_drive_controller -->
-  <rosparam command="load" file="$(find urdf_basic_shapes)/config/diffdrive_tko.yaml" ns="diff_drive_controller" />
+  <rosparam command="load" file="$(find urdf_basic_shapes)/config/diffdrive_tko.yaml" ns="diff_drive" />
   <!-- joint_state publisher -->
   <rosparam command="load" file="$(find urdf_basic_shapes)/config/joints.yaml" ns="joint_state_controller" />
   <!-- ros controller manager -->
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="diff_drive_controller
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="diff_drive
         joint_state_controller
         --shutdown-timeout 3"/>
 
   <!-- steering gui -->
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="/diff_drive_controller/cmd_vel"/>
+    <param name="default_topic" value="/diff_drive/cmd_vel"/>
   </node>
 
 </launch>
