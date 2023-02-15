@@ -1,9 +1,8 @@
 <launch>
-  <arg name="model" default="basic_example"/>
+  <arg name="model" default="tko_robot"/>
   <arg name="x_pos" default="0"/>
   <arg name="y_pos" default="0"/>
   <arg name="z_pos" default="0"/>
-  <arg name="multi_robot_name" default="/"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="paused" value="false"/>
@@ -19,10 +18,9 @@
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model $(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
 
-  <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
-    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
-  </node> -->
+  </node>
 
   <!-- joint controller  -->
   <!-- diff_drive_controller -->
