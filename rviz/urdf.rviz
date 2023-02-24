@@ -72,69 +72,36 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        butt:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_L_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_L_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_L_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_L_rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_L_rgb_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_R_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_R_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_R_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_R_rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_R_rgb_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         casterwheel_back:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        casterwheel_front:
+        cylinder:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        head:
+        imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        olei:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        olei_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        olei_lidar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -144,7 +111,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        scan:
+        scan_back:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        scan_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        scan_right:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -154,10 +131,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        wit/Imu:
+        tail:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -173,44 +151,32 @@ Visualization Manager:
           Value: false
         base_link:
           Value: false
-        butt:
-          Value: false
-        camera_L_depth_frame:
-          Value: false
-        camera_L_depth_optical_frame:
-          Value: false
-        camera_L_link:
-          Value: false
-        camera_L_rgb_frame:
-          Value: false
-        camera_L_rgb_optical_frame:
-          Value: false
-        camera_R_depth_frame:
-          Value: false
-        camera_R_depth_optical_frame:
-          Value: false
-        camera_R_link:
-          Value: false
-        camera_R_rgb_frame:
-          Value: false
-        camera_R_rgb_optical_frame:
-          Value: false
         casterwheel_back:
           Value: false
-        casterwheel_front:
-          Value: false
-        head:
-          Value: false
+        cylinder:
+          Value: true
+        imu:
+          Value: true
         left_wheel:
-          Value: false
+          Value: true
+        olei:
+          Value: true
+        olei_base_link:
+          Value: true
+        olei_lidar:
+          Value: true
         right_wheel:
-          Value: false
-        scan:
-          Value: false
+          Value: true
+        scan_back:
+          Value: true
+        scan_left:
+          Value: true
+        scan_right:
+          Value: true
         screen:
           Value: false
-        wit/Imu:
-          Value: false
+        tail:
+          Value: true
       Marker Scale: 0.5
       Name: TF
       Show Arrows: true
@@ -219,37 +185,30 @@ Visualization Manager:
       Tree:
         base_footprint:
           base_link:
-            butt:
-              {}
-            camera_L_link:
-              camera_L_depth_frame:
-                camera_L_depth_optical_frame:
-                  {}
-              camera_L_rgb_frame:
-                camera_L_rgb_optical_frame:
-                  {}
-            camera_R_link:
-              camera_R_depth_frame:
-                camera_R_depth_optical_frame:
-                  {}
-              camera_R_rgb_frame:
-                camera_R_rgb_optical_frame:
-                  {}
             casterwheel_back:
               {}
-            casterwheel_front:
+            cylinder:
               {}
-            head:
+            imu:
               {}
             left_wheel:
               {}
+            olei_base_link:
+              olei:
+                {}
+            olei_lidar:
+              {}
             right_wheel:
               {}
-            scan:
+            scan_back:
+              {}
+            scan_left:
+              {}
+            scan_right:
               {}
             screen:
               {}
-            wit/Imu:
+            tail:
               {}
       Update Interval: 0
       Value: true
