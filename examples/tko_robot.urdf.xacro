@@ -61,7 +61,7 @@
     <!-- Hokuyo Laser Left-->
     <xacro:hokuyo name="scan_left" xyz=".14 0.43 .077" rpy="0 0 ${pi/4}" parent="base_link" min_a="${-pi/2}" max_a="${pi}" topic="/lidarL/scan"/>
     <!-- Hokuyo Laser Right-->
-    <xacro:hokuyo name="scan_right" xyz=".14 -0.43 .162" rpy="0 0 -${pi/4}" parent="base_link" min_a="${-pi}" max_a="${pi/2}" topic="/lidarR/scan"/>
+    <xacro:hokuyo name="scan_right" xyz=".14 -0.43 .162" rpy="0 0 ${-pi/4 + 0.0436332}" parent="base_link" min_a="${-pi}" max_a="${pi/2}" topic="/lidarR/scan"/>
 
     <!-- TOP 3D Olei Lidar  -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/velodyne.urdf.xacro"/>
