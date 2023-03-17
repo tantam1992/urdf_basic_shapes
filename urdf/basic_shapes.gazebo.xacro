@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
-<robot name="basic_shapes" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+<robot name="basic_shapes"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:arg name="laser_visual" default="true"/>
 
   <xacro:property name="update_rate" value="10" />
@@ -8,18 +9,18 @@
   <xacro:property name="wheel_friction" value="10000.0" />
   <xacro:property name="sliding_friction" value="0.1" />
 
-    <xacro:macro name="gazebo_params" params="name rgb friction">
-        <gazebo reference="${name}">
-            <material>Gazebo/${rgb}</material>
-            <mu1>${friction}</mu1>
-            <mu2>${friction}</mu2>
-            <kp>500000.0</kp>
-            <kd>10.0</kd>
-            <minDepth>0.001</minDepth>
-            <maxVel>0.1</maxVel>
-            <fdir1>1 0 0</fdir1>
-        </gazebo>
-    </xacro:macro>
+  <xacro:macro name="gazebo_params" params="name rgb friction">
+    <gazebo reference="${name}">
+      <material>Gazebo/${rgb}</material>
+      <mu1>${friction}</mu1>
+      <mu2>${friction}</mu2>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <minDepth>0.001</minDepth>
+      <maxVel>0.1</maxVel>
+      <fdir1>1 0 0</fdir1>
+    </gazebo>
+  </xacro:macro>
 
   <!-- Gazebo plugin for ROS Control -->
   <!-- <gazebo>
@@ -95,5 +96,5 @@
     </sensor>
   </gazebo> -->
 
-  
+
 </robot>
