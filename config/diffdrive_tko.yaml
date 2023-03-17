@@ -1,12 +1,12 @@
 type: "diff_drive_controller/DiffDriveController"
-publish_rate: 20
+publish_rate: 50
 
 left_wheel: left_wheel_joint
 right_wheel: right_wheel_joint
 
 wheel_separation_multiplier: 1.0 # default: 1.0
-left_wheel_radius_multiplier: 1.2
-right_wheel_radius_multiplier: 1.2
+left_wheel_radius_multiplier: 1.0
+right_wheel_radius_multiplier: 1.0
 # wheel_separation: 0.78 # get value from urdf
 enable_odom_tf: true
 cmd_vel_timeout: 0.2
