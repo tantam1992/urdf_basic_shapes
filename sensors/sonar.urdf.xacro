@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="hokuyo"
     xmlns:xacro="http://wiki.ros.org/xacro">
-    <xacro:macro name="sonar" params="name parent xyz rpy min_a max_a topic=sonar">
+    <xacro:macro name="sonar" params="name parent xyz rpy min_a=-0.14835 max_a=0.14835 topic=sonar">
         <xacro:cube name="${name}" x="0.05" y="0.05" z="0.05" ori="-.025 0 0" rpy="0 0 0" rgb="Red" m="0.02" friction="${standard_friction}"/>
 
         <joint name="${name}_joint" type="fixed">
@@ -14,21 +14,21 @@
         <gazebo reference="${name}">
             <sensor type="ray" name="TeraRanger">
                 <pose>0 0 0 0 0 0</pose>
-                <visualize>true</visualize>
+                <visualize>false</visualize>
                 <update_rate>50</update_rate>
                 <ray>
                     <scan>
                         <horizontal>
                             <samples>10</samples>
                             <resolution>1</resolution>
-                            <min_angle>-0.14835</min_angle>
-                            <max_angle>0.14835</max_angle>
+                            <min_angle>${min_a}</min_angle>
+                            <max_angle>${max_a}</max_angle>
                         </horizontal>
                         <vertical>
                             <samples>10</samples>
                             <resolution>1</resolution>
-                            <min_angle>-0.14835</min_angle>
-                            <max_angle>0.14835</max_angle>
+                            <min_angle>${min_a}</min_angle>
+                            <max_angle>${max_a}</max_angle>
                         </vertical>
                     </scan>
                     <range>
@@ -38,7 +38,7 @@
                     </range>
                 </ray>
                 <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
-                    <gaussianNoise>0.005</gaussianNoise>
+                    <gaussianNoise>0.05</gaussianNoise>
                     <alwaysOn>true</alwaysOn>
                     <updateRate>50</updateRate>
                     <topicName>${topic}</topicName>
