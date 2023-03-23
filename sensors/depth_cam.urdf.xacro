@@ -60,6 +60,7 @@
 
     <gazebo reference="${name}_rgb_frame">
       <sensor type="depth" name="realsense_R200">
+        <update_rate>20.0</update_rate>
         <always_on>true</always_on>
         <visualize>$(arg camera_visual)</visualize>
         <camera>
@@ -78,7 +79,7 @@
         <plugin name="${name}_controller" filename="libgazebo_ros_openni_kinect.so">
           <baseline>0.2</baseline>
           <alwaysOn>true</alwaysOn>
-          <updateRate>30.0</updateRate>
+          <updateRate>20.0</updateRate>
           <cameraName>${name}</cameraName>
           <frameName>${name}_rgb_optical_frame</frameName>
           <imageTopicName>rgb/image_raw</imageTopicName>
@@ -88,11 +89,11 @@
           <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
           <pointCloudCutoff>0.4</pointCloudCutoff>
           <hackBaseline>0.07</hackBaseline>
-          <distortionK1>0.0</distortionK1>
-          <distortionK2>0.0</distortionK2>
-          <distortionK3>0.0</distortionK3>
-          <distortionT1>0.0</distortionT1>
-          <distortionT2>0.0</distortionT2>
+          <distortionK1>0.00000001</distortionK1>
+          <distortionK2>0.00000001</distortionK2>
+          <distortionK3>0.00000001</distortionK3>
+          <distortionT1>0.00000001</distortionT1>
+          <distortionT2>0.00000001</distortionT2>
           <CxPrime>0.0</CxPrime>
           <Cx>0.0</Cx>
           <Cy>0.0</Cy>
