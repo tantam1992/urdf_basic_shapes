@@ -3,9 +3,9 @@
   xmlns:xacro="http://wiki.ros.org/xacro">
   <xacro:macro name="depth_cam" params="name parent xyz rpy">
 
-    <xacro:property name="r200_cam_rgb_px" value="0.005"/>
-    <xacro:property name="r200_cam_rgb_py" value="0.018"/>
-    <xacro:property name="r200_cam_rgb_pz" value="0.013"/>
+    <xacro:property name="r200_cam_color_px" value="0.005"/>
+    <xacro:property name="r200_cam_color_py" value="0.018"/>
+    <xacro:property name="r200_cam_color_pz" value="0.013"/>
     <xacro:property name="r200_cam_depth_offset" value="0.01"/>
     <xacro:arg name="camera_visual" default="false"/>
 
@@ -29,22 +29,22 @@
       </collision>
     </link>
 
-    <joint name="${name}_rgb_joint" type="fixed">
-      <origin xyz="${r200_cam_rgb_px} ${r200_cam_rgb_py} ${r200_cam_rgb_pz}" rpy="0 0 0"/>
+    <joint name="${name}_color_joint" type="fixed">
+      <origin xyz="${r200_cam_color_px} ${r200_cam_color_py} ${r200_cam_color_pz}" rpy="0 0 0"/>
       <parent link="${name}_link"/>
-      <child link="${name}_rgb_frame"/>
+      <child link="${name}_color_frame"/>
     </joint>
-    <link name="${name}_rgb_frame"/>
+    <link name="${name}_color_frame"/>
 
-    <joint name="${name}_rgb_optical_joint" type="fixed">
+    <joint name="${name}_color_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
-      <parent link="${name}_rgb_frame"/>
-      <child link="${name}_rgb_optical_frame"/>
+      <parent link="${name}_color_frame"/>
+      <child link="${name}_color_optical_frame"/>
     </joint>
-    <link name="${name}_rgb_optical_frame"/>
+    <link name="${name}_color_optical_frame"/>
 
     <joint name="${name}_depth_joint" type="fixed">
-      <origin xyz="${r200_cam_rgb_px} ${r200_cam_rgb_py + r200_cam_depth_offset} ${r200_cam_rgb_pz}" rpy="0 0 0"/>
+      <origin xyz="${r200_cam_color_px} ${r200_cam_color_py + r200_cam_depth_offset} ${r200_cam_color_pz}" rpy="0 0 0"/>
       <parent link="${name}_link"/>
       <child link="${name}_depth_frame"/>
     </joint>
@@ -58,7 +58,7 @@
     <link name="${name}_depth_optical_frame"/>
 
 
-    <gazebo reference="${name}_rgb_frame">
+    <gazebo reference="${name}_color_frame">
       <sensor type="depth" name="realsense_R200">
         <always_on>true</always_on>
         <visualize>$(arg camera_visual)</visualize>
@@ -81,10 +81,10 @@
           <updateRate>30.0</updateRate>
           <cameraName>${name}</cameraName>
           <frameName>${name}_depth_optical_frame</frameName>
-          <imageTopicName>rgb/image_raw</imageTopicName>
+          <imageTopicName>color/image_raw</imageTopicName>
           <depthImageTopicName>depth/image_raw</depthImageTopicName>
           <pointCloudTopicName>depth/color/points</pointCloudTopicName>
-          <cameraInfoTopicName>rgb/${name}_info</cameraInfoTopicName>
+          <cameraInfoTopicName>color/${name}_info</cameraInfoTopicName>
           <depthImageCameraInfoTopicName>depth/${name}_info</depthImageCameraInfoTopicName>
           <pointCloudCutoff>0.4</pointCloudCutoff>
           <hackBaseline>0.07</hackBaseline>
