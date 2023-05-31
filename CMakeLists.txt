@@ -8,7 +8,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch meshes rviz urdf sensors examples world
+  DIRECTORY launch meshes rviz urdf sensors examples
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -30,7 +30,7 @@
         <parent link="rot_base"/>
         <child link="arm1"/>
         <axis xyz="0 1 0"/>
-        <limit lower="0"
+        <limit lower="0"/>
         <origin xyz="0 0 0.05" rpy="0 0 0"/>
     </joint>
 

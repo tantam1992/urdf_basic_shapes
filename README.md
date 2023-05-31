@@ -30,3 +30,8 @@ inside your workspace run
 `ros2 launch urdf_basic_shapes gazebo.launch.py model:=src/urdf_basic_shapes/examples/tko_robot.urdf.xacro`  
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/melodic-devel/include/images/tko_robot_rviz.png)
 ![alt text](https://github.com/JosefGst/urdf_basic_shapes/blob/humble-devel/include/images/tko_robot_gazebo.png)
+
+
+# Working with urdf_launch pkg
+
+    ros2 launch urdf_launch display.launch.py urdf_package:=urdf_basic_shapes urdf_package_path:=examples/diff_drive_bot.urdf.xacro
