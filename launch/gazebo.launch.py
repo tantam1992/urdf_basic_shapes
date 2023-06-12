@@ -17,7 +17,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
     pkg_share = launch_ros.substitutions.FindPackageShare(package='urdf_basic_shapes').find('urdf_basic_shapes')
     default_model_path = os.path.join(pkg_share, 'examples/basic_example.urdf.xacro') 
-    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
+    default_rviz_config_path = os.path.join(pkg_share, 'config/urdf.rviz')
 
     gui_arg = DeclareLaunchArgument(name='gui', default_value='false', choices=['true', 'false'],
                                     description='Flag to enable joint_state_publisher_gui')
