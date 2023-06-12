@@ -1,65 +1,51 @@
-# from ament_index_python.packages import get_package_share_path
-
 from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
 from launch.actions import DeclareLaunchArgument
+from launch_ros.substitutions import FindPackageShare
+from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import Command, LaunchConfiguration
 
 from launch_ros.actions import Node
-from launch_ros.parameter_descriptions import ParameterValue
-
-from launch.substitutions import Command, LaunchConfiguration
-import launch_ros
-import os
 
 
 def generate_launch_description():
-    pkg_share = launch_ros.substitutions.FindPackageShare(package='urdf_basic_shapes').find('urdf_basic_shapes')
-    default_model_path = os.path.join(pkg_share, 'examples/basic_example.urdf.xacro') 
-    default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
+    ld = LaunchDescription()
 
-    gui_arg = DeclareLaunchArgument(name='gui', default_value='true', choices=['true', 'false'],
-                                    description='Flag to enable joint_state_publisher_gui')
-    model_arg = DeclareLaunchArgument(name='model', default_value=str(default_model_path),
-                                      description='Absolute path to robot urdf file')
-    rviz_arg = DeclareLaunchArgument(name='rvizconfig', default_value=str(default_rviz_config_path),
-                                     description='Absolute path to rviz config file')
-    robot_description = ParameterValue(Command(['xacro ', LaunchConfiguration('model')]),
-                                       value_type=str)
+    urdf_basic_shapes_package = FindPackageShare('urdf_basic_shapes')
 
-    robot_state_publisher_node = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        parameters=[{'robot_description': robot_description}]
-    )
+    ld.add_action(DeclareLaunchArgument(name='jsp_gui', default_value='true', choices=['true', 'false'],
+                                        description='Flag to enable joint_state_publisher_gui'))
+
+
+    default_rviz_config_path = [urdf_basic_shapes_package, '/config/urdf.rviz']
+    ld.add_action(DeclareLaunchArgument(name='rviz_config', default_value=default_rviz_config_path,
+                                        description='Absolute path to rviz config file'))
+
+    ld.add_action(IncludeLaunchDescription(
+        [FindPackageShare('urdf_launch'), '/launch/description.launch.py'],
+        launch_arguments={
+            'urdf_package': 'urdf_basic_shapes',
+            'urdf_package_path': 'examples/basic_example.urdf.xacro'}.items()
+    ))
 
     # Depending on gui parameter, either launch joint_state_publisher or joint_state_publisher_gui
-    joint_state_publisher_node = Node(
+    ld.add_action(Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
-        condition=UnlessCondition(LaunchConfiguration('gui'))
-    )
+        condition=UnlessCondition(LaunchConfiguration('jsp_gui'))
+    ))
 
-    joint_state_publisher_gui_node = Node(
+    ld.add_action(Node(
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
-        condition=IfCondition(LaunchConfiguration('gui'))
-    )
+        condition=IfCondition(LaunchConfiguration('jsp_gui'))
+    ))
 
-    rviz_node = Node(
+    ld.add_action(Node(
         package='rviz2',
         executable='rviz2',
-        name='rviz2',
         output='screen',
-        arguments=['-d', LaunchConfiguration('rvizconfig')],
-    )
+        arguments=['-d', LaunchConfiguration('rviz_config')],
+    ))
 
-    return LaunchDescription([
-        gui_arg,
-        model_arg,
-        rviz_arg,
-        joint_state_publisher_node,
-        joint_state_publisher_gui_node,
-        robot_state_publisher_node,
-        rviz_node
-    ])
+    return ld
