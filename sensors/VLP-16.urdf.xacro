@@ -18,13 +18,13 @@
       <visual>
         <geometry>
           <!-- <cylinder radius="0.0516" length="0.0717"/> -->
-          <mesh filename="package://velodyne_description/meshes/VLP16_base_1.dae" />
+          <mesh filename="$(find velodyne_description)/meshes/VLP16_base_1.dae" />
         </geometry>
       </visual>
       <visual>
         <geometry>
           <!-- <cylinder radius="0.0516" length="0.0717"/> -->
-          <mesh filename="package://velodyne_description/meshes/VLP16_base_2.dae" />
+          <mesh filename="$(find velodyne_description)/meshes/VLP16_base_2.dae" />
         </geometry>
       </visual>
       <collision>
@@ -51,7 +51,7 @@
         <origin xyz="0 0 -0.0377"/>
         <geometry>
           <!-- <cylinder radius="0.0516" length="0.0717"/> -->
-          <mesh filename="package://velodyne_description/meshes/VLP16_scan.dae" />
+          <mesh filename="$(find velodyne_description)/meshes/VLP16_scan.dae" />
         </geometry>
       </visual>
     </link>

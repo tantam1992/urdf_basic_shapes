@@ -7,7 +7,7 @@
         <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
         <geometry>
           <!-- <box size="0.015 0.130 0.022"/> -->
-          <mesh filename="package://urdf_basic_shapes/meshes/intel_d435.dae"/>
+          <mesh filename="$(find urdf_basic_shapes)/meshes/intel_d435.dae"/>
         </geometry>
       </visual>
 

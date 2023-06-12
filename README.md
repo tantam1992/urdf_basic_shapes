@@ -8,7 +8,9 @@ library for basic urdf shapes. Create urdf robots and sensors simple.
 
 e.g.  
 launch robot model in rviz  
-`ros2 launch urdf_basic_shapes display.launch.py`  
+
+    ros2 launch urdf_basic_shapes display.launch.py urdf_package:=urdf_basic_shapes urdf_package_path:=examples/diff_drive_bot.urdf.xacro 
+    
 or to launch rviz together with gazebo simulator  
 `ros2 launch urdf_basic_shapes gazebo.launch.py`  
 
