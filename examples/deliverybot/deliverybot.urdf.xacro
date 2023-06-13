@@ -8,7 +8,29 @@
     <link name="base_footprint"/>
 
     <!--cylinder base_link -->
-    <xacro:cylinder_shape name="base_link" r="0.25" h="1.2" ori="0 0 .7" rpy="0 0 0" rgb="White" m="10" friction="${standard_friction}"/>
+    <!-- <xacro:cylinder_shape name="base_link" r="0.25" h="1.2" ori="0 0 .7" rpy="0 0 0" rgb="White" m="10" friction="${standard_friction}"/> -->
+    
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${-pi/2}"/>
+            <geometry>
+                <!-- <cylinder radius="0.25" length="1.2"/> -->
+                <mesh filename="file://$(find urdf_basic_shapes)/meshes/deliverybot.dae"/>
+            </geometry>
+            <material name="LightGrey">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.7" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.25" length="1.2"/>
+            </geometry>
+        </collision>
+        <xacro:solid_cylinder_inertia m="10" r=".25" h="1.2"/>
+    </link>
+
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint"/>
         <child link="base_link"/>
@@ -16,15 +38,15 @@
     </joint>
 
     <!-- cubic screen -->
-    <xacro:cube name="screen" x=".15" y=".3" z=".4" ori=".25 0 1" rpy="0 0 0" rgb="Blue" m="1" friction="${standard_friction}"/>
+    <!-- <xacro:cube name="screen" x=".15" y=".3" z=".4" ori=".25 0 1" rpy="0 0 0" rgb="Blue" m="1" friction="${standard_friction}"/>
     <joint name="screen_joint" type="fixed">
         <parent link="base_link"/>
         <child link="screen"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-    </joint>
+    </joint> -->
 
     <!-- cubic butt -->
-    <xacro:cube name="butt" x=".3" y=".5" z=".4" ori="0 0 0" rpy="0 0 0" rgb="White" m="1" friction="${standard_friction}"/>
+    <xacro:cube name="butt" x=".3" y=".4" z=".4" ori="0 0 0" rpy="0 0 0" rgb="White" m="10" friction="${standard_friction}"/>
     <joint name="butt_joint" type="fixed">
         <parent link="base_link"/>
         <child link="butt"/>
@@ -32,12 +54,12 @@
     </joint>
 
     <!-- Head  -->
-    <xacro:ball name="head" r="0.25" ori="0 0 0" rpy="0 0 0" rgb="White" m="1" friction="${standard_friction}"/>
+    <!-- <xacro:ball name="head" r="0.25" ori="0 0 0" rpy="0 0 0" rgb="White" m="1" friction="${standard_friction}"/>
     <joint name="joint_head" type="fixed">
         <parent link="base_link"/>
         <child link="head"/>
         <origin xyz="0 0 1.3" rpy="0 0 0"/>
-    </joint>
+    </joint> -->
 
     <!-- diff drive -->
     <!-- the parent link should be the center of wheel axis -->
@@ -49,31 +71,31 @@
     <joint name="joint_casterwheel_back" type="fixed">
         <parent link="base_link"/>
         <child link="casterwheel_back"/>
-        <origin xyz="-.25 0 -.0" rpy="0 0 0"/>
+        <origin xyz="-.2 0 -.0" rpy="0 0 0"/>
     </joint>
     <!-- caster wheel front -->
     <xacro:ball name="casterwheel_front" r="0.1" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".1" friction="${sliding_friction}"/>
     <joint name="joint_casterwheel_front" type="fixed">
         <parent link="base_link"/>
         <child link="casterwheel_front"/>
-        <origin xyz=".25 0 -.0" rpy="0 0 0"/>
+        <origin xyz=".2 0 -.0" rpy="0 0 0"/>
     </joint>
 
     
     <!-- Hokuyo Laser -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
     <xacro:hokuyo name="scan_front" xyz=".25 0 .05" rpy="0 ${pi} 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="scan"/>
-    <xacro:hokuyo name="scan_back" xyz="-.25 0 .05" rpy="${pi} 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="back/scan"/>
-
-     <!-- imu -->
-    <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
-    <xacro:imu name="imu" xyz="0 0 0" rpy="0 0 0" parent="cameraL"/>
-    <!-- better not use "/" in "name" can cause some warnings -->
+    <xacro:hokuyo name="scan_back" xyz="-.30 0 .05" rpy="${pi} 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="back/scan"/>
 
     <!-- depth_cam -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
-    <xacro:depth_cam name="cameraL" xyz=".19 0.18 .3" rpy="0 0 ${pi/4}" parent="base_link"/>
-    <xacro:depth_cam name="cameraR" xyz=".19 -.18 .3" rpy="${pi} 0 -${pi/4}" parent="base_link"/>
+    <xacro:depth_cam name="cameraL" xyz=".22 0.19 .3" rpy="0 0 ${pi/4}" parent="base_link"/>
+    <xacro:depth_cam name="cameraR" xyz=".22 -.19 .3" rpy="${pi} 0 -${pi/4}" parent="base_link"/>
+
+    <!-- imu -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
+    <xacro:imu name="imu" xyz="0 0 0" rpy="0 0 0" parent="cameraL"/>
+    <!-- better not use "/" in "name" can cause some warnings -->
 
 
 </robot>
