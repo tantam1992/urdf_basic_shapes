@@ -89,12 +89,12 @@
 
     <!-- depth_cam -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
-    <xacro:depth_cam name="cameraL" xyz=".22 0.19 .3" rpy="0 0 ${pi/4}" parent="base_link"/>
-    <xacro:depth_cam name="cameraR" xyz=".22 -.19 .3" rpy="${pi} 0 -${pi/4}" parent="base_link"/>
+    <xacro:depth_cam name="camL" xyz=".22 0.19 .3" rpy="0 0 ${pi/4}" parent="base_link"/>
+    <xacro:depth_cam name="camR" xyz=".22 -.19 .3" rpy="${pi} 0 -${pi/4}" parent="base_link"/>
 
     <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
-    <xacro:imu name="imu" xyz="0 0 0" rpy="0 0 0" parent="cameraL"/>
+    <xacro:imu name="imu" xyz="0 0 0" rpy="0 0 0" parent="camL_link"/>
     <!-- better not use "/" in "name" can cause some warnings -->
 
 
