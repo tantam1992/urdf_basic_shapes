@@ -13,7 +13,7 @@
 
     <link name="base_link">
         <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${-pi/2}"/>
+            <origin xyz="0.0 0.0 -0.10" rpy="0.0 0.0 ${-pi/2}"/>
             <geometry>
                 <!-- <cylinder radius="0.25" length="1.2"/> -->
                 <mesh filename="file://$(find urdf_basic_shapes)/meshes/deliverybot.dae"/>
@@ -89,8 +89,8 @@
 
     <!-- depth_cam -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
-    <xacro:depth_cam name="camL" xyz=".22 0.19 .3" rpy="0 0 ${pi/4}" parent="base_link"/>
-    <xacro:depth_cam name="camR" xyz=".22 -.19 .3" rpy="${pi} 0 -${pi/4}" parent="base_link"/>
+    <xacro:depth_cam name="camL" xyz=".22 0.19 .2" rpy="0 0 ${pi/4}" parent="base_link"/>
+    <xacro:depth_cam name="camR" xyz=".22 -.19 .2" rpy="${pi} 0 -${pi/4}" parent="base_link"/>
 
     <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
