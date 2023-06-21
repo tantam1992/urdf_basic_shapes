@@ -33,7 +33,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
     </joint>
 
-    <!-- <link name="${name}_depth_frame"/>
+    <link name="${name}_depth_frame"/>
 
     <joint name="${name}_depth_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
@@ -41,8 +41,8 @@
       <child link="${name}_depth_frame"/>
     </joint>
 
-    <gazebo reference="${name}">
-      <sensor name="depth_${name}" type="depth">
+    <gazebo reference="${name}_link">
+      <sensor name="${name}" type="depth">
         <visualize>true</visualize>
         <update_rate>10.0</update_rate>
         <camera name="${name}">
@@ -62,6 +62,13 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>0.0</updateRate>
           <frame_name>${name}_depth_frame</frame_name>
+          <ros>
+            <!-- <remapping>${name}/image_raw:=color/image_raw</remapping>
+            <remapping>${name}/depth/image_raw:=depth/image_rect_raw</remapping>
+            <remapping>${name}/camera_info:=camera_info</remapping>
+            <remapping>${name}/depth/camera_info:=depth/camera_info</remapping> -->
+            <remapping>${name}/points:=${name}/depth/color/points</remapping>
+          </ros>
           <pointCloudCutoff>0.5</pointCloudCutoff>
           <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
           <distortionK1>0</distortionK1>
@@ -76,7 +83,7 @@
           <hackBaseline>0</hackBaseline>
         </plugin>
       </sensor>
-    </gazebo> -->
+    </gazebo>
 
   </xacro:macro>
 </robot>
