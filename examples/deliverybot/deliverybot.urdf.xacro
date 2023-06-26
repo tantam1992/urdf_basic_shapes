@@ -91,6 +91,9 @@
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
     <xacro:depth_cam name="camL" xyz=".22 0.19 .2" rpy="0 ${-pi/4} ${pi/4}" parent="base_link"/>
     <xacro:depth_cam name="camR" xyz=".22 -.19 .2" rpy="${pi} ${-pi/4} -${pi/4}" parent="base_link"/>
+    <!-- usb_cam -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/usb_cam.urdf.xacro"/>
+    <xacro:usb_cam name="camF" xyz=".28 0 .125" rpy="0 0 0" parent="base_link"/>
 
     <!-- imu -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
