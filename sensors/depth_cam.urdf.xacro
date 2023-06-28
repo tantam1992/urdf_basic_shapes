@@ -63,10 +63,10 @@
           <updateRate>0.0</updateRate>
           <frame_name>${name}_depth_frame</frame_name>
           <ros>
-            <!-- <remapping>${name}/image_raw:=color/image_raw</remapping>
-            <remapping>${name}/depth/image_raw:=depth/image_rect_raw</remapping>
-            <remapping>${name}/camera_info:=camera_info</remapping>
-            <remapping>${name}/depth/camera_info:=depth/camera_info</remapping> -->
+            <!-- <remapping>${name}/image_raw:=color/image_raw</remapping> -->
+            <remapping>${name}/depth/image_raw:=${name}/depth/image_rect_raw</remapping>
+            <!-- <remapping>${name}/camera_info:=camera_info</remapping> -->
+            <!-- <remapping>${name}/depth/camera_info:=depth/camera_info</remapping> -->
             <remapping>${name}/points:=${name}/depth/color/points</remapping>
           </ros>
           <pointCloudCutoff>0.5</pointCloudCutoff>
