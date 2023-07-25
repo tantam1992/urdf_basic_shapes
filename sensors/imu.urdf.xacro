@@ -23,7 +23,7 @@
                     <topicName>${name}</topicName>
                     <remapping>~/out:=${name}</remapping>
                     <bodyName>${name}</bodyName>
-                    <updateRateHZ>10.0</updateRateHZ>
+                    <updateRateHZ>200.0</updateRateHZ>
                     <gaussianNoise>0.0</gaussianNoise>
                     <xyzOffset>0 0 0</xyzOffset>
                     <rpyOffset>0 0 0</rpyOffset>
