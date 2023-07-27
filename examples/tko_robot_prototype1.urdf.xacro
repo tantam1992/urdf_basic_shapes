@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<robot name="deliverybot"
+    xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- basic shapes -->
+    <xacro:include filename="$(find urdf_basic_shapes)/urdf/basic_shapes.urdf.xacro"/>
+
+
+    <link name="base_footprint"/>
+
+    <!--cubic base_link -->
+    <xacro:cube name="base_link" x=".325" y=".78" z="1.226" ori="-.0975 0 .613" rpy="0 0 0" rgb="Blue" m="10" friction="${standard_friction}"/>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.075" rpy="0 0 0"/>
+    </joint>
+
+    <!-- cylinder -->
+    <xacro:cylinder_shape name="cylinder" r="0.025" h=".25" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".1" friction="${standard_friction}"/>
+    <joint name="joint_cylinder" type="fixed">
+        <parent link="base_link"/>
+        <child link="cylinder"/>
+        <origin xyz="0 0 1.32" rpy="0 0 0"/>
+    </joint>
+
+    <!-- tail -->
+    <xacro:cube name="tail" x="1.065" y=".2" z=".05" ori="-0.5325 0 0" rpy="0 0 0" rgb="Grey" m="3" friction="${standard_friction}"/>
+    <joint name="tail_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="tail"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    </joint>
+
+    <!-- cubic screen -->
+    <xacro:cube name="screen" x=".15" y=".4" z=".3" ori="0 0 0" rpy="0 0 0" rgb="Grey" m=".1" friction="${standard_friction}"/>
+    <joint name="screen_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="screen"/>
+        <origin xyz="0.0 0.1 1" rpy="0 0 0"/>
+    </joint>
+
+    <!-- diff drive -->
+    <!-- the parent link should be the center of wheel axis -->
+    <xacro:include filename="$(find urdf_basic_shapes)/urdf/diff_wheel_control.urdf.xacro"/>
+    <xacro:diff_wheel wheeldiam="0.145" h=".035" wheel_separation=".7" parent="base_link" friction="2000" rgb="Black" odom_topic="odom" pub_tf="false"/>
+
+    <!-- caster wheel back -->
+    <xacro:ball name="casterwheel_back" r="0.04" ori="0 0 0" rpy="0 0 0" rgb="Black" m="1" friction="${sliding_friction}"/>
+    <joint name="joint_casterwheel_back" type="fixed">
+        <parent link="base_link"/>
+        <child link="casterwheel_back"/>
+        <origin xyz="-.885 0 -.03" rpy="0 0 0"/>
+    </joint>
+
+
+
+    <!-- Hokuyo Laser Back-->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
+    <xacro:hokuyo name="scan_back" xyz="-1.017 0 0" rpy="${pi} 0 ${pi}" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}" topic="/lidarBack/scan"/>
+    <!-- Hokuyo Laser Front-->
+    <xacro:hokuyo name="scan_front" xyz=".14 0.0 .077" rpy="0 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}" topic="/lidarFront/scan"/>
+
+    <!-- TOP 3D Olei Lidar  -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/velodyne.urdf.xacro"/>
+    <xacro:velodyne16 name="olei" xyz="0 0 1.392" rpy="0 0 0" parent="base_link"/>
+    <!-- add scan topic to velodyne lidar-->
+    <xacro:hokuyo name="olei_lidar" xyz="0 0 1.392" rpy="0 0 0" parent="base_link" min_a="${-pi}" max_a="${pi}" topic="scan"/>
+    <!-- VERTICAL 3D Olei Lidar  -->
+    <!-- <xacro:velodyne16 name="olei_vertical" xyz="0.2 0 1" rpy="0 ${pi*1/4} 0" parent="base_link"/> -->
+
+    <!-- imu -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/imu.urdf.xacro"/>
+    <xacro:imu name="imu" xyz="0 0 0" rpy="0 0 0" parent="base_link"/>
+
+    <!-- depth_cam -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
+    <xacro:depth_cam name="cameraF" xyz=".2 0 ${.815-.075}" rpy="0 0 0" parent="base_link"/>
+    <!-- <xacro:depth_cam name="cameraF" xyz=".2 0 ${.76-.075}" rpy="0 0 0" parent="base_link"/> -->
+    <xacro:depth_cam name="cameraB" xyz="-.3 0 ${.6-.075}" rpy="0 0 ${pi}" parent="base_link"/>
+    <xacro:depth_cam name="cameraL" xyz="0 0.4 ${.9-.075}" rpy="${pi/2} 0 ${pi - 0.610865}" parent="base_link"/>
+    <xacro:depth_cam name="cameraR" xyz="0 -.4 ${.9-.075}" rpy="${-pi/2} 0 ${pi + 0.610865}" parent="base_link"/>
+
+    <!-- Sonar -->
+    <xacro:include filename="$(find urdf_basic_shapes)/sensors/sonar.urdf.xacro"/>
+    <xacro:sonar name="sonarR" xyz="-1.1 -.05 .05" rpy="0 -.0872665 ${pi + 0.174533}" parent="base_link" min_a="-0.05" max_a="0.05" topic="sonarR"/>
+    <xacro:sonar name="sonarL" xyz="-1.1 0.05 .05" rpy="0 -.0872665 ${pi - 0.174533}" parent="base_link" min_a="-0.05" max_a="0.05" topic="sonarL"/>
+
+</robot>
