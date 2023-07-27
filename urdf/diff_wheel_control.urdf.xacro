@@ -14,7 +14,7 @@
         <transmission name="left_wheel_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="left_wheel_joint">
-                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
             </joint>
             <actuator name="left_wheel_actuator">
                 <mechanicalReduction>1.0</mechanicalReduction>
@@ -32,7 +32,7 @@
         <transmission name="right_wheel_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="right_wheel_joint">
-                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
             </joint>
             <actuator name="right_wheel_actuator">
                 <mechanicalReduction>1.0</mechanicalReduction>
