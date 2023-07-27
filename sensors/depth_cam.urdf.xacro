@@ -80,7 +80,7 @@
         </camera>
         <plugin name="${name}_controller" filename="libgazebo_ros_openni_kinect.so">
           <baseline>0.2</baseline>
-          <alwaysOn>true</alwaysOn>roslaunch navigation navigation.launch map:=aws_hospital planner:=dwa
+          <alwaysOn>true</alwaysOn>
           <updateRate>30.0</updateRate>
           <cameraName>${name}</cameraName>
           <frameName>${name}_depth_optical_frame</frameName>
