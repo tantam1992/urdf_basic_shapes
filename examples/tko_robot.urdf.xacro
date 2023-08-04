@@ -33,17 +33,17 @@
     </joint>
 
     <!-- hands -->
-    <xacro:cube name="handR" x=".6365" y=".095" z=".100" ori="-${.6365/2}  0 0" rpy="0 0 0" rgb="Blue" m="10" friction="${standard_friction}"/>
+    <xacro:cube name="handR" x=".6365" y=".171" z=".175" ori="-${.6365/2}  0 ${.175/2}" rpy="0 0 0" rgb="Blue" m="10" friction="${standard_friction}"/>
     <joint name="handR_joint" type="fixed">
         <parent link="base_link"/>
         <child link="handR"/>
-        <origin xyz="-.2475 -.3775 0.585" rpy="0 0 0"/>
+        <origin xyz="-.2475 -.3775 0.575" rpy="0 0 0"/>
     </joint>
-    <xacro:cube name="handL" x=".6365" y=".095" z=".100" ori="-${.6365/2} 0 0" rpy="0 0 0" rgb="Blue" m="10" friction="${standard_friction}"/>
+    <xacro:cube name="handL" x=".6365" y=".171" z=".175" ori="-${.6365/2} 0 ${.175/2}" rpy="0 0 0" rgb="Blue" m="10" friction="${standard_friction}"/>
     <joint name="handL_joint" type="fixed">
         <parent link="base_link"/>
         <child link="handL"/>
-        <origin xyz="-.2475 .3775 0.585" rpy="0 0 0"/>
+        <origin xyz="-.2475 .3775 0.575" rpy="0 0 0"/>
     </joint>
 
     <!-- tail -->
@@ -79,9 +79,9 @@
 
     <!-- Hokuyo Laser Back-->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/hokuyo.urdf.xacro"/>
-    <xacro:hokuyo name="scan_back" xyz="-.9765 0 0" rpy="${pi} 0 ${pi}" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}" topic="/lidarBack/scan"/>
+    <xacro:hokuyo name="scan_back" xyz="-.9765 0 0" rpy="${pi} 0 ${pi}" parent="base_link" min_a="${-pi/18}" max_a="${pi/18}" topic="/lidarBack/scan"/>
     <!-- Hokuyo Laser Front-->
-    <xacro:hokuyo name="scan_front" xyz=".14 0.0 .077" rpy="0 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}" topic="/lidarFront/scan"/>
+    <xacro:hokuyo name="scan_front" xyz=".14 0.0 0.23" rpy="0 0 0" parent="base_link" min_a="${-pi/2}" max_a="${pi/2}" topic="/lidarFront/scan"/>
 
     <!-- TOP 3D Olei Lidar  -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/velodyne.urdf.xacro"/>
@@ -97,11 +97,11 @@
 
     <!-- depth_cam -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
-    <xacro:depth_cam name="cameraF"      xyz=".230 0 ${.855-.075}" rpy="0 0 0" parent="base_link"/>
-    <xacro:depth_cam name="cameraF_down"    xyz=".140 0 ${.360-.075}" rpy="0 0 0" parent="base_link"/>
-    <xacro:depth_cam name="cameraB" xyz="-.3 0 ${.71-.075}" rpy="0 0 ${pi}" parent="base_link"/>
+    <xacro:depth_cam name="cameraF"      xyz=".230 0 ${.8540-.075}" rpy="0 0 0" parent="base_link"/>
+    <xacro:depth_cam name="cameraF_down" xyz=".140 0 ${.3625-.075}" rpy="0 0 0" parent="base_link"/>
     <xacro:depth_cam name="cameraL" xyz="0 ${0.71031/2} ${.4275-.075}" rpy="${pi/2} 0 ${pi - 0.610865}" parent="base_link"/>
     <xacro:depth_cam name="cameraR" xyz="0 -${0.71031/2} ${.4275-.075}" rpy="${-pi/2} 0 ${pi + 0.610865}" parent="base_link"/>
+    <xacro:depth_cam name="cameraB" xyz="-.3 0 ${.7045-.075}" rpy="0 0 ${pi}" parent="base_link"/>
 
     <!-- Sonar -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/sonar.urdf.xacro"/>
