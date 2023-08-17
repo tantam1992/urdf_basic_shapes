@@ -85,10 +85,10 @@
           <cameraName>${name}</cameraName>
           <frameName>${name}_depth_optical_frame</frameName>
           <imageTopicName>color/image_raw</imageTopicName>
-          <depthImageTopicName>depth/image_raw</depthImageTopicName>
+          <depthImageTopicName>depth/image_rect_raw</depthImageTopicName>
           <pointCloudTopicName>depth/color/points</pointCloudTopicName>
           <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
-          <depthImageCameraInfoTopicName>depth/${name}_info</depthImageCameraInfoTopicName>
+          <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
           <pointCloudCutoff>0.4</pointCloudCutoff>
           <hackBaseline>0.07</hackBaseline>
           <distortionK1>0.0</distortionK1>

@@ -98,7 +98,7 @@
     <!-- depth_cam -->
     <xacro:include filename="$(find urdf_basic_shapes)/sensors/depth_cam.urdf.xacro"/>
     <xacro:depth_cam name="cameraF"      xyz=".230 0 ${.8540-.075}" rpy="0 0 0" parent="base_link"/>
-    <xacro:depth_cam name="cameraF_down" xyz=".140 0 ${.3625-.075}" rpy="0 0 0" parent="base_link"/>
+    <xacro:depth_cam name="cameraF_down" xyz=".140 0 ${.3625-.075}" rpy="-${pi} 0 0" parent="base_link"/>
     <xacro:depth_cam name="cameraL" xyz="0 ${0.71031/2} ${.4275-.075}" rpy="${pi/2} 0 ${pi - 0.610865}" parent="base_link"/>
     <xacro:depth_cam name="cameraR" xyz="0 -${0.71031/2} ${.4275-.075}" rpy="${-pi/2} 0 ${pi + 0.610865}" parent="base_link"/>
     <xacro:depth_cam name="cameraB" xyz="-.3 0 ${.7045-.075}" rpy="0 0 ${pi}" parent="base_link"/>
