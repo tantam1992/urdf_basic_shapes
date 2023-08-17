@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="hokuyo"
     xmlns:xacro="http://wiki.ros.org/xacro">
-    <xacro:macro name="hokuyo" params="name parent xyz rpy min_a max_a topic=scan">
+    <xacro:macro name="hokuyo" params="name parent xyz rpy min_a=${-pi} max_a=${pi} topic=scan">
         <link name="${name}">
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
