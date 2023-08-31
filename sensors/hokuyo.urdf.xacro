@@ -35,7 +35,7 @@
         <gazebo reference="${name}">
             <sensor type="ray" name="${name}_hokuyo_sensor">
                 <pose>0 0 0 0 0 0</pose>
-                <visualize>false</visualize>
+                <visualize>true</visualize>
                 <update_rate>10</update_rate>
                 <ray>
                     <scan>
